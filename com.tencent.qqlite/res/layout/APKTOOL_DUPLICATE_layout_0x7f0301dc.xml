@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09044f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
+    <TextView android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907f2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204e2" android:paddingLeft="10.0dip" android:paddingRight="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="头像" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

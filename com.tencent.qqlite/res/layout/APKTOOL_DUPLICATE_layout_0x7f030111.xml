@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:background="#fffafafa" android:layout_width="fill_parent" android:layout_height="47.0dip">
+        <RelativeLayout android:layout_gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090583" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a0" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090584" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0229" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_gravity="right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090585" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a0" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090586" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a022a" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <com.tencent.mobileqq.activity.TroopGagDurationSettingPannel android:id="@id/APKTOOL_DUPLICATE_id_0x7f090587" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

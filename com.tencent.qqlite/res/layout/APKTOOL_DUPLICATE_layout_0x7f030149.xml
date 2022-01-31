@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="top" android:background="#ff1a1a1a" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090645" android:paddingLeft="15.0dip" android:paddingTop="11.0dip" android:paddingRight="15.0dip" android:paddingBottom="11.0dip" android:layout_width="52.0dip" android:layout_height="44.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02038d" android:scaleType="centerInside" />
+        <ImageView android:layout_gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090646" android:paddingLeft="15.0dip" android:paddingTop="11.0dip" android:paddingRight="15.0dip" android:paddingBottom="11.0dip" android:layout_width="52.0dip" android:layout_height="44.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020382" android:scaleType="centerInside" />
+        <Chronometer android:textSize="16.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090647" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f090648" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <SurfaceView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090649" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09064a" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020388" />
+    </FrameLayout>
+    <FrameLayout android:layout_gravity="bottom" android:background="#ff1a1a1a" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center|left" android:id="@id/close" android:paddingLeft="20.0dip" android:paddingTop="23.0dip" android:paddingRight="20.0dip" android:paddingBottom="23.0dip" android:layout_width="63.0dip" android:layout_height="85.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02037f" android:scaleType="centerInside" />
+        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09064b" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="86.0dip" android:layout_height="86.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02038a" android:scaleType="centerInside" />
+        <TextView android:textSize="16.0dip" android:gravity="center" android:layout_gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09064c" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="重拍" />
+        <TextView android:textSize="16.0dip" android:gravity="center" android:layout_gravity="center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09064d" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="使用视频" />
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/common_xlistview" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020081" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f09088f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204fa" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="77.0dip" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090284" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+        <TextView android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:background="@drawable/skin_header_bar_bg" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@null" android:singleLine="true" android:layout_centerInParent="true" style="@style/TitleText" />
+        <TextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="200.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206fc" android:drawablePadding="6.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+        <TextView android:id="@id/ivTitleBtnRightText" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0a23" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0125" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090890" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c008b" android:layout_alignParentBottom="true" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f090891" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

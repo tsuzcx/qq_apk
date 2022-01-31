@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <nine-patch android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02042a" android:dither="true" />
+    </item>
+    <item android:id="@android:id/progress">
+        <clip android:gravity="left" android:clipOrientation="horizontal">
+            <nine-patch android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02042b" android:dither="true" />
+        </clip>
+    </item>
+</layer-list>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="200.0dip">
+        <View android:layout_gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090522" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <LinearLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <com.tencent.mobileqq.activity.NumberWheelView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090523" android:layout_width="60.0dip" android:layout_height="fill_parent" android:layout_marginTop="-6.0dip" android:layout_marginBottom="-7.0dip" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b0001" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090524" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginRight="9.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0226" />
+            <com.tencent.mobileqq.activity.NumberWheelView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090525" android:layout_width="60.0dip" android:layout_height="fill_parent" android:layout_marginTop="-6.0dip" android:layout_marginBottom="-7.0dip" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b0001" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090526" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginRight="5.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0227" />
+            <com.tencent.mobileqq.activity.NumberWheelView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090527" android:layout_width="60.0dip" android:layout_height="fill_parent" android:layout_marginTop="-6.0dip" android:layout_marginBottom="-7.0dip" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b0001" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090528" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginRight="20.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0228" />
+        </LinearLayout>
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f090529" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="78.0dip" />
+            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f09052a" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="40.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f090529" />
+        </RelativeLayout>
+    </FrameLayout>
+</RelativeLayout>

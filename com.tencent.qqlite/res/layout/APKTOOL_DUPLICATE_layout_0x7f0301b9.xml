@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" tencent:skintype="contact_list_bg"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.qqlite">
+    <LinearLayout android:orientation="vertical" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.ClearableEditText android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00b4" android:textColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0b00b3" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0900fd" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201f1" android:paddingLeft="16.0dip" android:paddingRight="12.0dip" android:layout_marginTop="20.0dip" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0a0a32" android:drawablePadding="6.0dip" android:contentDescription="昵称/关键字" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00f4" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f09078c" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" tencent:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f09078d" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" tencent:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f09078e" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" tencent:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f09078f" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" tencent:showArrow="true" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f090790" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="20.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a03fa" style="@style/APKTOOL_DUPLICATE_style_0x7f0e006f" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

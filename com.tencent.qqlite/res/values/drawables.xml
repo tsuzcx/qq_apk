@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="drawable" name="trans">@color/APKTOOL_DUPLICATE_color_0x7f0b0005</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f0207bf">#ff00a5e0</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f0207c0">#00000000</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f0207c1">#00000000</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f0207c2">#fff7f7f7</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f0207c3">#99000000</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f0207c4">#ff0079ff</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f0207c5">#ffdedede</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f0207c6">#ff0079ff</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f0207c7">#ffffffff</item>
+</resources>

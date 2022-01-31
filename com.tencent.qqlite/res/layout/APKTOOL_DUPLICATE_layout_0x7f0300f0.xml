@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="#ffefeff4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.open.agent.CardContainer android:id="@id/APKTOOL_DUPLICATE_id_0x7f0904cf" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02009d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="10.0dip">
+        <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0300ef" />
+        <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0300ee" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202ae" android:adjustViewBounds="true" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202af" android:adjustViewBounds="true" android:layout_alignParentRight="true" />
+    </com.tencent.open.agent.CardContainer>
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0904d0" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a07f3" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0904cf" style="@style/APKTOOL_DUPLICATE_style_0x7f0e006f" />
+</RelativeLayout>

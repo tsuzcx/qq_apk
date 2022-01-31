@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090493" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020081" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f090732" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090733" android:background="@drawable/skin_header_bar_bg" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" tencent:skintype="title_bg_bar"
+      xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.qqlite">
+        <TextView android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="96.0dip" android:layout_marginRight="96.0dip" android:text="@null" android:singleLine="true" android:layout_centerInParent="true" style="@style/TitleText" />
+        <TextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="200.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206fc" android:drawablePadding="6.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+        <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03005c" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f090734" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f090732" android:layout_centerVertical="true" />
+</RelativeLayout>

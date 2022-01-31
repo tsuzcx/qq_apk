@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/skin_setting_strip_top_unpressed" android:layout_width="fill_parent" android:layout_height="54.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/textView1" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c011a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0004" />
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/title" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0108" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0905d4" style="@style/APKTOOL_DUPLICATE_style_0x7f0e010b" />
+    <LinearLayout android:id="@id/content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e010f">
+        <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e011a" />
+        <TextView android:id="@id/info" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0114" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09090d" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203ba" android:layout_marginLeft="5.0dip" android:layout_marginTop="2.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0114" />
+    </LinearLayout>
+</RelativeLayout>

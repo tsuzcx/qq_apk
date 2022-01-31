@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020719" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090284" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <TextView android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a09ac" />
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906c6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0aba" />
+    </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="25.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f090284" android:layout_centerHorizontal="true">
+        <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906c7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:maxHeight="4.0dip" android:max="100" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020028" android:minHeight="4.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0906c8" android:layout_centerVertical="true" style="?android:attr/progressBarStyleHorizontal" />
+        <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906c8" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020440" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</RelativeLayout>

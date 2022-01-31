@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090486" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020081" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.qqlite">
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f09048d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f090013" formItem:leftText="@string/APKTOOL_DUPLICATE_string_0x7f0a080a" formItem:showArrow="true" />
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f09048e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a080b" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0073" />
+</LinearLayout>

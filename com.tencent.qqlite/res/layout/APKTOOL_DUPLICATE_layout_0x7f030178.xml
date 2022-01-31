@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/skin_aio_input_bar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906dc" android:layout_width="fill_parent" android:layout_height="115.0dip" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0b0011" />
+</RelativeLayout>

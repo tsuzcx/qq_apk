@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090124" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.bubble.ChatXListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090125" android:focusable="false" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:transcriptMode="normal" android:divider="@null" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f090126" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090127" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200d8" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c0014" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090128" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a03e0" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f090127" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

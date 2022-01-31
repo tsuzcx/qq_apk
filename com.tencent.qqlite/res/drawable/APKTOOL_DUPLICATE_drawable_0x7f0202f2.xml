@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202f7" />
+    <item android:id="@android:id/progress">
+        <clip android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202f8" />
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202f9" />
+    </item>
+</layer-list>

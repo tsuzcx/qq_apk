@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/laba_entrys_layout" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206f5" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="82.0dip">
+        <RelativeLayout android:id="@id/qzone_feed_entry" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200f0" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:contentDescription="点击进入好友动态">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907c6" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204d7" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0126" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907c7" android:layout_marginTop="4.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a06c6" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0907c6" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0127" />
+            <TextView android:id="@id/qzone_feed_reddot" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00e3" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00e3" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0907c6" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0907c6" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0124" />
+            <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907c9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204f7" android:padding="1.0dip" android:visibility="gone" android:layout_width="31.0dip" android:layout_height="31.0dip" android:layout_marginRight="-16.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02021a" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0907c6" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0907c6" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907ca" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200f0" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:contentDescription="点击进入附近列表界面">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907cb" android:background="@drawable/qq_leba_list_seek_neighbour" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0126" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907cc" android:layout_marginTop="4.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a06ee" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0907cb" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0127" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907cd" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00e3" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00e3" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0907cb" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0907cb" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0124" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020739" android:layout_width="fill_parent" android:layout_height="2.0px" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907ce" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020081" android:paddingLeft="15.0dip" android:paddingTop="20.0dip" android:paddingRight="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <EditText android:textSize="14.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907cf" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202b2" android:layout_width="0.0dip" android:layout_height="31.0dip" android:singleLine="true" android:drawableLeft="@drawable/skin_searchbar_icon" android:drawablePadding="2.0dip" android:layout_weight="1.0" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b0043" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907d0" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202b3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a058a" />
+    </LinearLayout>
+</LinearLayout>

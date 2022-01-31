@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020192" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09053b" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.TabBarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09035c" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f09053c" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.tencent.mobileqq.widget.GridListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a9f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201ec" android:dividerHeight="1.0px" android:headerDividersEnabled="false" android:footerDividersEnabled="false" />
+        <com.tencent.mobileqq.widget.GridListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090aa0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201ec" android:dividerHeight="1.0px" android:headerDividersEnabled="false" android:footerDividersEnabled="false" />
+    </FrameLayout>
+</LinearLayout>

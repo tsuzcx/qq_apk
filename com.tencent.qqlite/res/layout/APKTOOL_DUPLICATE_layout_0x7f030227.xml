@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.emoticonview.EmoticonLinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f09095d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f090331" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03008c" />
+</FrameLayout>

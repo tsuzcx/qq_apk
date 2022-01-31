@@ -1,0 +1,117 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: QQ轻聊版_3.3.0.apk
+compressionType: false
+doNotCompress:
+- resources.arsc
+- assets/exlibs.1.jar
+- assets/exlibs.2.jar
+- png
+- jpg
+- R/f/ddy.gif
+- R/f/ddz.gif
+- R/f/dea.gif
+- R/f/deb.gif
+- R/f/ded.gif
+- R/f/dee.gif
+- R/f/def.gif
+- R/f/deh.gif
+- R/f/dei.gif
+- R/f/dej.gif
+- R/f/dek.gif
+- R/f/del.gif
+- R/f/dem.gif
+- R/f/deo.gif
+- R/f/dep.gif
+- R/f/deq.gif
+- R/f/der.gif
+- R/f/des.gif
+- R/f/det.gif
+- R/f/deu.gif
+- R/f/dew.gif
+- R/f/dex.gif
+- R/f/dey.gif
+- R/f/dez.gif
+- R/f/dfa.gif
+- R/f/dfb.gif
+- R/f/dfc.gif
+- R/f/dfd.gif
+- R/f/dfe.gif
+- R/f/dfh.gif
+- R/f/dfj.gif
+- R/f/dfk.gif
+- R/f/dfl.gif
+- R/f/dfn.gif
+- R/f/dfo.gif
+- R/f/dfs.gif
+- R/f/dfu.gif
+- R/f/dfv.gif
+- R/f/dfw.gif
+- R/f/dfz.gif
+- R/f/dgb.gif
+- R/f/dgd.gif
+- R/f/dge.gif
+- R/f/dgf.gif
+- R/f/dgg.gif
+- R/f/dgh.gif
+- R/f/dgi.gif
+- R/f/dgj.gif
+- R/f/dgk.gif
+- R/f/dgx.gif
+- R/f/dgy.gif
+- R/f/dgz.gif
+- R/f/dha.gif
+- R/f/dhb.gif
+- R/f/dhc.gif
+- R/f/dhd.gif
+- R/f/dhe.gif
+- R/f/dhf.gif
+- R/f/dhg.gif
+- R/f/dhh.gif
+- R/f/dhi.gif
+- R/f/dhj.gif
+- R/f/dhk.gif
+- R/f/dhl.gif
+- R/f/dhm.gif
+- R/f/dhn.gif
+- R/f/dho.gif
+- R/f/dth.gif
+- R/f/dtj.gif
+- R/f/dtl.gif
+- R/f/dto.gif
+- R/f/dtq.gif
+- R/f/dvs.gif
+- R/f/dvt.gif
+- R/f/dvw.gif
+- R/f/dvz.gif
+- R/f/dwd.gif
+- R/f/dyk.gif
+- R/f/dzk.gif
+- R/f/dzm.gif
+- R/f/eao.gif
+- R/f/edf.gif
+- R/f/edg.gif
+- R/f/edk.gif
+- R/f/edl.gif
+- R/f/eeb.gif
+- R/f/egd.gif
+- R/f/egg.gif
+- mp3
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '8'
+sharedLibrary: false
+sparseResources: false
+unknownFiles:
+  BeaconVersion.txt: '8'
+  com/qq/jce/wup/wup.properties: '8'
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.6.0
+versionInfo:
+  versionCode: '154'
+  versionName: 3.3.0

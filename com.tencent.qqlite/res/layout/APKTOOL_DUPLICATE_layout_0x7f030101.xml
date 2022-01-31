@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09052b" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00b7" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00b7"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0902c1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f09001a" android:visibility="gone" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00b7" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00b7" android:progress="0" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02037c" style="?android:attr/progressBarStyleHorizontal" />
+    <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09052c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203bb" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" />
+</FrameLayout>

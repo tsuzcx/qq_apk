@@ -1,0 +1,130 @@
+package com.tencent.mobileqq.app.asyncdb;
+
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
+
+public class CacheManager
+  implements Manager
+{
+  public static final int a = 1;
+  private static final String jdField_a_of_type_JavaLangString = "Q.db.Cache";
+  private static final int jdField_b_of_type_Int = 2;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private DBDelayManager jdField_a_of_type_ComTencentMobileqqAppAsyncdbDBDelayManager;
+  private boolean jdField_a_of_type_Boolean = false;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
+  private BaseCache[] jdField_a_of_type_ArrayOfComTencentMobileqqAppAsyncdbBaseCache = new BaseCache[2];
+  private boolean jdField_b_of_type_Boolean = false;
+  private int[] jdField_b_of_type_ArrayOfInt = new int[0];
+  
+  public CacheManager(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbDBDelayManager = new DBDelayManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  private void a(int[] paramArrayOfInt)
+  {
+    int j = paramArrayOfInt.length;
+    int i = 0;
+    while (i < j)
+    {
+      int k = paramArrayOfInt[i];
+      long l = System.currentTimeMillis();
+      BaseCache localBaseCache = a(k);
+      localBaseCache.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.db.Cache", 2, "cacheManager init cache:" + localBaseCache.getClass().getName() + " cost=" + (System.currentTimeMillis() - l));
+      }
+      localBaseCache.a(0);
+      i += 1;
+    }
+  }
+  
+  public BaseCache a(int paramInt)
+  {
+    ??? = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAsyncdbBaseCache[paramInt];
+    if (??? == null) {}
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAsyncdbBaseCache)
+      {
+        BaseCache localBaseCache = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAsyncdbBaseCache[paramInt];
+        if (localBaseCache != null) {
+          return localBaseCache;
+        }
+        long l = System.currentTimeMillis();
+        switch (paramInt)
+        {
+        case 1: 
+          if ((localBaseCache != null) && (this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAsyncdbBaseCache[paramInt] == null)) {
+            this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAsyncdbBaseCache[paramInt] = localBaseCache;
+          }
+          if ((QLog.isColorLevel()) && (localBaseCache != null)) {
+            QLog.d("Q.db.Cache", 2, "get cache instance:" + localBaseCache.getClass().getName() + " cost=" + (System.currentTimeMillis() - l));
+          }
+          return localBaseCache;
+        }
+      }
+      return ???;
+    }
+  }
+  
+  public DBDelayManager a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbDBDelayManager;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    a(this.jdField_a_of_type_ArrayOfInt);
+    this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbDBDelayManager.a();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    a(this.jdField_b_of_type_ArrayOfInt);
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void onDestroy()
+  {
+    for (;;)
+    {
+      int i;
+      synchronized (this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAsyncdbBaseCache)
+      {
+        BaseCache[] arrayOfBaseCache2 = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAsyncdbBaseCache;
+        int j = arrayOfBaseCache2.length;
+        i = 0;
+        if (i < j)
+        {
+          BaseCache localBaseCache = arrayOfBaseCache2[i];
+          if (localBaseCache != null) {
+            localBaseCache.b();
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbDBDelayManager.onDestroy();
+          return;
+        }
+      }
+      i += 1;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.qqlite\assets\exlibs.1.jar\classes.jar
+ * Qualified Name:     com.tencent.mobileqq.app.asyncdb.CacheManager
+ * JD-Core Version:    0.7.0.1
+ */

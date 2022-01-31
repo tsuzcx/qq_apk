@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingBottom="2.0dip" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901de" android:paddingLeft="8.0dip" android:paddingTop="4.0dip" android:paddingRight="8.0dip" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="19.0dip" android:layout_marginTop="13.0dip" android:layout_marginRight="19.0dip" android:layout_marginBottom="8.0dip" android:text="看电影中国合伙人中国合伙人中国" android:singleLine="true" android:lineSpacingExtra="4.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901df" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020053" android:paddingLeft="12.0dip" android:paddingTop="10.0dip" android:paddingRight="12.0dip" android:paddingBottom="12.0dip" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="19.0dip" android:layout_marginRight="19.0dip">
+        <TextView android:textSize="13.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901e2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="看电影中国合伙人看电影中国合伙人看电电电电中国合伙人看电影中国合伙人" />
+        <LinearLayout android:paddingTop="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901e3" android:layout_width="11.0dip" android:layout_height="11.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02064d" android:contentDescription="@null" />
+            <TextView android:textSize="11.0sp" android:textColor="#ff808080" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901e4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="4.0dip" android:text="深圳市南山区保利影院深圳市" android:singleLine="true" />
+            <TextView android:textSize="11.0sp" android:textColor="#ff808080" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901e5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="13-6-7" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

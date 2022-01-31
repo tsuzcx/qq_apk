@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="72.0dip" android:layout_height="38.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c009a" android:layout_alignParentBottom="true">
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f09033f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205cc" android:layout_width="2.0px" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c009b" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090340" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201f5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f09033f" />
+        <ImageView android:id="@id/tabView" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c0097" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c0097" android:scaleType="centerInside" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

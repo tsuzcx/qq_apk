@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingLeft="10.0dip" android:paddingTop="15.0dip" android:paddingRight="10.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f09070d" android:layout_width="fill_parent" android:layout_height="44.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0068">
+        <TextView android:textSize="18.0dip" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906f8" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a00b1" android:singleLine="true" android:includeFontPadding="false" android:layout_centerInParent="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0069" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.troop.widget.NearbyTroopsExpandableListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090598" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020192" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:transcriptMode="disabled" android:divider="@null" />
+    <RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090599" android:background="@null" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <RelativeLayout android:paddingBottom="64.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f09059a" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020311" android:visibility="gone" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginLeft="10.0dip" />
+            <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f09059b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02030f" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginLeft="10.0dip" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/btn_back" android:layout_width="fill_parent" android:layout_height="55.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</RelativeLayout>
