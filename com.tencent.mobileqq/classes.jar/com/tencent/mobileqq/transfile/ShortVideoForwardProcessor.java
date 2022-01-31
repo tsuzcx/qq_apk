@@ -300,7 +300,7 @@ public class ShortVideoForwardProcessor
       paramArrayOfByte.append(((ServerAddr)localObject2).jdField_a_of_type_Int);
     }
     paramArrayOfByte.append("/qqupload?ver=");
-    paramArrayOfByte.append("3560");
+    paramArrayOfByte.append("3565");
     paramArrayOfByte.append("&ukey=");
     paramArrayOfByte.append(this.jdField_l_of_type_JavaLangString);
     paramArrayOfByte.append("&filekey=");
@@ -2951,7 +2951,7 @@ public class ShortVideoForwardProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoForwardProcessor
  * JD-Core Version:    0.7.0.1
  */

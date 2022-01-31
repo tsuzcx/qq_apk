@@ -133,7 +133,7 @@ public class tfl
     paramBundle.append("type=" + EquipLockWebEntrance.d);
     paramBundle.append("&plat=1");
     paramBundle.append("&app=1");
-    paramBundle.append("&version=7.6.3.3560");
+    paramBundle.append("&version=7.6.3.3565");
     paramBundle.append("&device=" + URLEncoder.encode(Build.DEVICE));
     paramBundle.append("&system=" + Build.VERSION.RELEASE);
     paramBundle.append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));

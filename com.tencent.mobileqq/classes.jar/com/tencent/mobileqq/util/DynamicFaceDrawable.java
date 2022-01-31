@@ -389,7 +389,7 @@ public class DynamicFaceDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.util.DynamicFaceDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -102,7 +102,7 @@ public class ApolloContentUpdateHandler
     Object localObject1 = paramQQAppInterface.getCurrentAccountUin();
     localReqBody.int_protocolver.set(1);
     localReqBody.uint_clientplatid.set(109);
-    localReqBody.str_clientver.set("7.6.3.3560");
+    localReqBody.str_clientver.set("7.6.3.3565");
     localReqBody.uint_uin.set(Long.parseLong((String)localObject1));
     Object localObject2 = new ClubContentUpdateInfoPb.ReqItemInfo();
     ((ClubContentUpdateInfoPb.ReqItemInfo)localObject2).uint_version.set(i);
@@ -237,7 +237,7 @@ public class ApolloContentUpdateHandler
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     localReqBody.int_protocolver.set(1);
     localReqBody.uint_clientplatid.set(109);
-    localReqBody.str_clientver.set("7.6.3.3560");
+    localReqBody.str_clientver.set("7.6.3.3565");
     localReqBody.uint_uin.set(Long.parseLong(str));
     int i;
     if (paramArrayList == null)

@@ -6,7 +6,7 @@ public abstract interface CustomedTabWidget$OnSwitchTabListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CustomedTabWidget.OnSwitchTabListener
  * JD-Core Version:    0.7.0.1
  */

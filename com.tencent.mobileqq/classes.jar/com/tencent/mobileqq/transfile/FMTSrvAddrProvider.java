@@ -368,60 +368,60 @@ public final class FMTSrvAddrProvider
     //   58: astore_3
     //   59: sipush 1024
     //   62: newarray byte
-    //   64: astore 4
-    //   66: aload 5
-    //   68: astore_3
-    //   69: new 153	java/io/ByteArrayOutputStream
-    //   72: dup
-    //   73: invokespecial 154	java/io/ByteArrayOutputStream:<init>	()V
-    //   76: astore_2
+    //   64: astore_2
+    //   65: aload 5
+    //   67: astore_3
+    //   68: new 153	java/io/ByteArrayOutputStream
+    //   71: dup
+    //   72: invokespecial 154	java/io/ByteArrayOutputStream:<init>	()V
+    //   75: astore 4
     //   77: aload 5
     //   79: astore_3
     //   80: aload 5
-    //   82: aload 4
-    //   84: invokevirtual 248	java/io/FileInputStream:read	([B)I
-    //   87: istore_1
-    //   88: iload_1
-    //   89: iconst_m1
-    //   90: if_icmpeq +60 -> 150
-    //   93: aload 5
-    //   95: astore_3
-    //   96: aload_2
-    //   97: aload 4
-    //   99: iconst_0
-    //   100: iload_1
-    //   101: invokevirtual 252	java/io/ByteArrayOutputStream:write	([BII)V
-    //   104: goto -27 -> 77
-    //   107: astore 4
-    //   109: aconst_null
-    //   110: astore_2
-    //   111: aload 5
-    //   113: astore_3
-    //   114: invokestatic 229	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   117: ifeq +16 -> 133
-    //   120: aload 5
-    //   122: astore_3
-    //   123: ldc 231
-    //   125: iconst_2
-    //   126: ldc 80
-    //   128: aload 4
-    //   130: invokestatic 255	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   133: aload_2
-    //   134: astore_3
-    //   135: aload 5
-    //   137: ifnull -93 -> 44
-    //   140: aload 5
-    //   142: invokevirtual 256	java/io/FileInputStream:close	()V
-    //   145: aload_2
-    //   146: areturn
-    //   147: astore_3
-    //   148: aload_2
-    //   149: areturn
-    //   150: aload 5
-    //   152: astore_3
-    //   153: new 258	com/qq/taf/jce/JceInputStream
-    //   156: dup
-    //   157: aload_2
+    //   82: aload_2
+    //   83: invokevirtual 248	java/io/FileInputStream:read	([B)I
+    //   86: istore_1
+    //   87: iload_1
+    //   88: iconst_m1
+    //   89: if_icmpeq +60 -> 149
+    //   92: aload 5
+    //   94: astore_3
+    //   95: aload 4
+    //   97: aload_2
+    //   98: iconst_0
+    //   99: iload_1
+    //   100: invokevirtual 252	java/io/ByteArrayOutputStream:write	([BII)V
+    //   103: goto -26 -> 77
+    //   106: astore 4
+    //   108: aconst_null
+    //   109: astore_2
+    //   110: aload 5
+    //   112: astore_3
+    //   113: invokestatic 229	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   116: ifeq +16 -> 132
+    //   119: aload 5
+    //   121: astore_3
+    //   122: ldc 231
+    //   124: iconst_2
+    //   125: ldc 80
+    //   127: aload 4
+    //   129: invokestatic 255	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   132: aload_2
+    //   133: astore_3
+    //   134: aload 5
+    //   136: ifnull -92 -> 44
+    //   139: aload 5
+    //   141: invokevirtual 256	java/io/FileInputStream:close	()V
+    //   144: aload_2
+    //   145: areturn
+    //   146: astore_3
+    //   147: aload_2
+    //   148: areturn
+    //   149: aload 5
+    //   151: astore_3
+    //   152: new 258	com/qq/taf/jce/JceInputStream
+    //   155: dup
+    //   156: aload 4
     //   158: invokevirtual 168	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   161: invokespecial 261	com/qq/taf/jce/JceInputStream:<init>	([B)V
     //   164: astore 4
@@ -467,51 +467,51 @@ public final class FMTSrvAddrProvider
     //   231: astore 5
     //   233: aconst_null
     //   234: astore_2
-    //   235: goto -124 -> 111
+    //   235: goto -125 -> 110
     //   238: astore 4
-    //   240: goto -129 -> 111
+    //   240: goto -130 -> 110
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	243	0	this	FMTSrvAddrProvider
-    //   87	14	1	i	int
+    //   86	14	1	i	int
     //   6	196	2	localObject1	Object
     //   203	12	2	localObject2	Object
     //   216	1	2	localIOException1	java.io.IOException
     //   224	1	2	localObject3	Object
     //   234	1	2	localObject4	Object
-    //   43	92	3	localObject5	Object
-    //   147	1	3	localIOException2	java.io.IOException
-    //   152	36	3	localObject6	Object
+    //   43	91	3	localObject5	Object
+    //   146	1	3	localIOException2	java.io.IOException
+    //   151	37	3	localObject6	Object
     //   200	1	3	localIOException3	java.io.IOException
     //   205	6	3	localObject7	Object
     //   220	1	3	localIOException4	java.io.IOException
-    //   64	34	4	arrayOfByte	byte[]
-    //   107	22	4	localException1	Exception
+    //   75	21	4	localByteArrayOutputStream	ByteArrayOutputStream
+    //   106	51	4	localException1	Exception
     //   164	18	4	localJceInputStream	com.qq.taf.jce.JceInputStream
     //   228	1	4	localException2	Exception
     //   238	1	4	localException3	Exception
     //   54	178	5	localFileInputStream	java.io.FileInputStream
     // Exception table:
     //   from	to	target	type
-    //   59	66	107	java/lang/Exception
-    //   69	77	107	java/lang/Exception
-    //   80	88	107	java/lang/Exception
-    //   96	104	107	java/lang/Exception
-    //   153	166	107	java/lang/Exception
-    //   169	177	107	java/lang/Exception
-    //   140	145	147	java/io/IOException
+    //   59	65	106	java/lang/Exception
+    //   68	77	106	java/lang/Exception
+    //   80	87	106	java/lang/Exception
+    //   95	103	106	java/lang/Exception
+    //   152	166	106	java/lang/Exception
+    //   169	177	106	java/lang/Exception
+    //   139	144	146	java/io/IOException
     //   193	198	200	java/io/IOException
     //   0	30	203	finally
     //   46	56	203	finally
     //   34	42	216	java/io/IOException
     //   210	214	220	java/io/IOException
-    //   59	66	224	finally
-    //   69	77	224	finally
-    //   80	88	224	finally
-    //   96	104	224	finally
-    //   114	120	224	finally
-    //   123	133	224	finally
-    //   153	166	224	finally
+    //   59	65	224	finally
+    //   68	77	224	finally
+    //   80	87	224	finally
+    //   95	103	224	finally
+    //   113	119	224	finally
+    //   122	132	224	finally
+    //   152	166	224	finally
     //   169	177	224	finally
     //   180	186	224	finally
     //   0	30	228	java/lang/Exception
@@ -2074,7 +2074,7 @@ public final class FMTSrvAddrProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.FMTSrvAddrProvider
  * JD-Core Version:    0.7.0.1
  */

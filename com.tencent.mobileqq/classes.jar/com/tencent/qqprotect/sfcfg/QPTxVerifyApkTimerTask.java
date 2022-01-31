@@ -414,7 +414,7 @@ public class QPTxVerifyApkTimerTask
             if (str4 != null) {
               jdField_b_of_type_JavaLangString = str4;
             }
-            if ((str2 == null) || (!str2.equalsIgnoreCase(jdField_b_of_type_JavaLangString)) || (localObject3 == null) || (!((String)localObject3).equalsIgnoreCase("7.6.3.3560"))) {
+            if ((str2 == null) || (!str2.equalsIgnoreCase(jdField_b_of_type_JavaLangString)) || (localObject3 == null) || (!((String)localObject3).equalsIgnoreCase("7.6.3.3565"))) {
               break label455;
             }
             if (localObject2 != null) {
@@ -431,8 +431,8 @@ public class QPTxVerifyApkTimerTask
           localReportDetectResultPacket.str_apkmd5.set(jdField_a_of_type_JavaLangString);
           localReportDetectResultPacket.str_rsamd5.set(jdField_b_of_type_JavaLangString);
           localReportDetectResultPacket.str_txsfcfgkmd5.set(jdField_c_of_type_JavaLangString);
-          localReportDetectResultPacket.str_apkversion.set("7.6.3.3560");
-          localReportDetectResultPacket.str_channelid.set("2017");
+          localReportDetectResultPacket.str_apkversion.set("7.6.3.3565");
+          localReportDetectResultPacket.str_channelid.set("10001264");
           localReportDetectResultPacket.str_uin.set(localQQAppInterface.getCurrentAccountUin());
           localReportDetectResultPacket.bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
           localReportDetectResultPacket.str_sysversion.set(Build.VERSION.RELEASE);
@@ -485,7 +485,7 @@ public class QPTxVerifyApkTimerTask
       localEditor.putString("SecHisTxs", jdField_c_of_type_JavaLangString);
       localEditor.putString("SecHisRa", jdField_b_of_type_JavaLangString);
       localEditor.putString("SecHisAk", jdField_a_of_type_JavaLangString);
-      localEditor.putString("SecVer", "7.6.3.3560");
+      localEditor.putString("SecVer", "7.6.3.3565");
       localEditor.commit();
       return;
     }

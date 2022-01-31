@@ -15,7 +15,7 @@ public abstract class UploadEditItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.UploadEditItem
  * JD-Core Version:    0.7.0.1
  */

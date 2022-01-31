@@ -34,11 +34,11 @@ public class StructLongMessageIpSaver
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_2
-    //   5: aconst_null
-    //   6: astore_3
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore_2
+    //   4: aconst_null
+    //   5: astore 4
     //   7: aload_2
     //   8: astore_1
     //   9: getstatic 36	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:c	Ljava/lang/String;
@@ -124,37 +124,37 @@ public class StructLongMessageIpSaver
     //   164: aload_1
     //   165: invokevirtual 112	java/io/IOException:printStackTrace	()V
     //   168: return
-    //   169: astore_1
-    //   170: aload_3
-    //   171: astore_2
-    //   172: aload_1
-    //   173: astore_3
-    //   174: aload_2
-    //   175: astore_1
-    //   176: invokestatic 99	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   179: ifeq +13 -> 192
-    //   182: aload_2
-    //   183: astore_1
-    //   184: ldc 101
-    //   186: iconst_2
-    //   187: ldc 141
-    //   189: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   192: aload_2
-    //   193: astore_1
-    //   194: aload_3
-    //   195: invokevirtual 142	java/io/FileNotFoundException:printStackTrace	()V
-    //   198: aload_2
-    //   199: ifnull -140 -> 59
-    //   202: aload_2
-    //   203: invokevirtual 139	java/io/BufferedReader:close	()V
-    //   206: return
-    //   207: astore_1
-    //   208: aload_1
-    //   209: invokevirtual 112	java/io/IOException:printStackTrace	()V
-    //   212: return
-    //   213: astore_3
-    //   214: aload 4
-    //   216: astore_2
+    //   169: astore_3
+    //   170: aload 4
+    //   172: astore_2
+    //   173: aload_2
+    //   174: astore_1
+    //   175: invokestatic 99	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   178: ifeq +13 -> 191
+    //   181: aload_2
+    //   182: astore_1
+    //   183: ldc 101
+    //   185: iconst_2
+    //   186: ldc 141
+    //   188: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   191: aload_2
+    //   192: astore_1
+    //   193: aload_3
+    //   194: invokevirtual 142	java/io/FileNotFoundException:printStackTrace	()V
+    //   197: aload_2
+    //   198: ifnull -139 -> 59
+    //   201: aload_2
+    //   202: invokevirtual 139	java/io/BufferedReader:close	()V
+    //   205: return
+    //   206: astore_1
+    //   207: aload_1
+    //   208: invokevirtual 112	java/io/IOException:printStackTrace	()V
+    //   211: return
+    //   212: astore_1
+    //   213: aload_3
+    //   214: astore_2
+    //   215: aload_1
+    //   216: astore_3
     //   217: aload_2
     //   218: astore_1
     //   219: invokestatic 99	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -198,7 +198,7 @@ public class StructLongMessageIpSaver
     //   283: astore_3
     //   284: goto -67 -> 217
     //   287: astore_3
-    //   288: goto -114 -> 174
+    //   288: goto -115 -> 173
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	291	0	this	StructLongMessageIpSaver
@@ -206,21 +206,22 @@ public class StructLongMessageIpSaver
     //   60	2	1	localIOException1	java.io.IOException
     //   67	1	1	localObject2	Object
     //   163	2	1	localIOException2	java.io.IOException
-    //   169	4	1	localFileNotFoundException1	java.io.FileNotFoundException
-    //   175	19	1	localObject3	Object
-    //   207	2	1	localIOException3	java.io.IOException
+    //   174	19	1	localObject3	Object
+    //   206	2	1	localIOException3	java.io.IOException
+    //   212	4	1	localException1	java.lang.Exception
     //   218	19	1	localObject4	Object
     //   250	8	1	localIOException4	java.io.IOException
     //   260	10	1	localObject5	Object
     //   279	1	1	localObject6	Object
-    //   4	262	2	localObject7	Object
+    //   3	263	2	localObject7	Object
     //   271	2	2	localIOException5	java.io.IOException
-    //   6	189	3	localObject8	Object
-    //   213	25	3	localException1	java.lang.Exception
-    //   256	4	3	localObject9	Object
+    //   1	1	3	localObject8	Object
+    //   169	45	3	localFileNotFoundException1	java.io.FileNotFoundException
+    //   216	22	3	localObject9	Object
+    //   256	4	3	localObject10	Object
     //   283	1	3	localException2	java.lang.Exception
     //   287	1	3	localFileNotFoundException2	java.io.FileNotFoundException
-    //   1	214	4	localObject10	Object
+    //   5	166	4	localObject11	Object
     //   15	66	5	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
@@ -231,21 +232,21 @@ public class StructLongMessageIpSaver
     //   31	37	169	java/io/FileNotFoundException
     //   39	47	169	java/io/FileNotFoundException
     //   68	92	169	java/io/FileNotFoundException
-    //   202	206	207	java/io/IOException
-    //   9	17	213	java/lang/Exception
-    //   19	29	213	java/lang/Exception
-    //   31	37	213	java/lang/Exception
-    //   39	47	213	java/lang/Exception
-    //   68	92	213	java/lang/Exception
+    //   201	205	206	java/io/IOException
+    //   9	17	212	java/lang/Exception
+    //   19	29	212	java/lang/Exception
+    //   31	37	212	java/lang/Exception
+    //   39	47	212	java/lang/Exception
+    //   68	92	212	java/lang/Exception
     //   245	249	250	java/io/IOException
     //   9	17	256	finally
     //   19	29	256	finally
     //   31	37	256	finally
     //   39	47	256	finally
     //   68	92	256	finally
-    //   176	182	256	finally
-    //   184	192	256	finally
-    //   194	198	256	finally
+    //   175	181	256	finally
+    //   183	191	256	finally
+    //   193	197	256	finally
     //   219	225	256	finally
     //   227	235	256	finally
     //   237	241	256	finally
@@ -807,7 +808,7 @@ public class StructLongMessageIpSaver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.StructLongMessageIpSaver
  * JD-Core Version:    0.7.0.1
  */

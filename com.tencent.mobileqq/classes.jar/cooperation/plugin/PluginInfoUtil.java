@@ -204,7 +204,7 @@ public class PluginInfoUtil
   
   public static boolean a(File paramFile)
   {
-    return !IOUtil.contentEquals(new File(paramFile, "PluginVersion.ini"), "349884");
+    return !IOUtil.contentEquals(new File(paramFile, "PluginVersion.ini"), "351230");
   }
   
   /* Error */

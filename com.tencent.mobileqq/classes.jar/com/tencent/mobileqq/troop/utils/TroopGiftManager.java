@@ -179,7 +179,7 @@ public class TroopGiftManager
           }
           paramInt4 = AppSetting.jdField_a_of_type_Int;
           localReqBody.bytes_user_ip.set(ByteStringMicro.copyFrom(paramString2.getBytes()), true);
-          localReqBody.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.3.3560".getBytes()), true);
+          localReqBody.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.3.3565".getBytes()), true);
           localReqBody.uint32_client.set(1, true);
           localReqBody.uint32_instance_id.set(paramInt4, true);
           localReqBody.setHasFlag(true);
@@ -332,7 +332,7 @@ public class TroopGiftManager
     }
     paramInt3 = AppSetting.jdField_a_of_type_Int;
     localReqBody.bytes_user_ip.set(ByteStringMicro.copyFrom(paramString2.getBytes()), true);
-    localReqBody.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.3.3560".getBytes()), true);
+    localReqBody.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.3.3565".getBytes()), true);
     localReqBody.uint32_client.set(1, true);
     localReqBody.uint32_instance_id.set(paramInt3, true);
     localReqBody.uint32_business_id.set(paramInt2, true);
@@ -427,7 +427,7 @@ public class TroopGiftManager
       long l = Long.parseLong(paramString1);
       oidb_0x962.ClientInfo localClientInfo = new oidb_0x962.ClientInfo();
       localClientInfo.uint32_client_type.set(1, true);
-      localClientInfo.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.3.3560".getBytes()), true);
+      localClientInfo.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.3.3565".getBytes()), true);
       paramString1 = new oidb_0x962.ReqBody();
       paramString1.uint64_group_code.set(l, true);
       paramString1.bytes_id.set(ByteStringMicro.copyFrom(paramString2.getBytes()), true);
@@ -554,7 +554,7 @@ public class TroopGiftManager
     }
     cmd0x9e9.ReqBody localReqBody = new cmd0x9e9.ReqBody();
     cmd0x9e9.User localUser = new cmd0x9e9.User();
-    localUser.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.3.3560".getBytes()), true);
+    localUser.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.3.3565".getBytes()), true);
     localUser.uint32_client.set(1, true);
     localUser.uint32_portal.set(paramInt, true);
     localReqBody.msg_user.set(localUser, true);
@@ -733,7 +733,7 @@ public class TroopGiftManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGiftManager
  * JD-Core Version:    0.7.0.1
  */

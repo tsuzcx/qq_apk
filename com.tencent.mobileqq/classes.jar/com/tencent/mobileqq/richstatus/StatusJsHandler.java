@@ -64,7 +64,7 @@ public class StatusJsHandler
     localNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
     localGetPublicAccountDetailInfoRequest.version.set(1);
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("7.6.3,3,3560");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("7.6.3,3,3565");
     localGetPublicAccountDetailInfoRequest.seqno.set(0);
     try
     {

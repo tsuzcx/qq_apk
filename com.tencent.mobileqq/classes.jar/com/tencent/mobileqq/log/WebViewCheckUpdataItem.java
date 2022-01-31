@@ -145,8 +145,8 @@ public class WebViewCheckUpdataItem
     Object localObject2 = new PreloadInfoCheckUpdate.ControlReqHead();
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).protocol_ver.set(1);
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).client_plat_id.set(109);
-    ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).client_ver.set("7.6.3.3560");
-    ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).os_ver.set("349884");
+    ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).client_ver.set("7.6.3.3565");
+    ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).os_ver.set("351230");
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
     ((PreloadInfoCheckUpdate.WebViewConfigReq)localObject1).head.set((MessageMicro)localObject2);
     localObject1 = ((PreloadInfoCheckUpdate.WebViewConfigReq)localObject1).toByteArray();
@@ -272,7 +272,7 @@ public class WebViewCheckUpdataItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.log.WebViewCheckUpdataItem
  * JD-Core Version:    0.7.0.1
  */

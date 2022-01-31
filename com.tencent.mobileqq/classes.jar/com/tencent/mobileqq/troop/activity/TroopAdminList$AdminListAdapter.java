@@ -73,7 +73,7 @@ public class TroopAdminList$AdminListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAdminList.AdminListAdapter
  * JD-Core Version:    0.7.0.1
  */

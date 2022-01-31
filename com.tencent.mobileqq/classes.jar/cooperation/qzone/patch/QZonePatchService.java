@@ -119,7 +119,7 @@ public class QZonePatchService
   
   private static void a(int paramInt)
   {
-    LocalMultiProcConfig.putInt("V 7.6.3.3560p_ver", paramInt);
+    LocalMultiProcConfig.putInt("V 7.6.3.3565p_ver", paramInt);
   }
   
   private static void a(long paramLong)

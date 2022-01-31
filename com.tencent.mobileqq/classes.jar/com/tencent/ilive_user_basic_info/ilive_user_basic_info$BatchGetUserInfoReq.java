@@ -17,7 +17,7 @@ public final class ilive_user_basic_info$BatchGetUserInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ilive_user_basic_info.ilive_user_basic_info.BatchGetUserInfoReq
  * JD-Core Version:    0.7.0.1
  */

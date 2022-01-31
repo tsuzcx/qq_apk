@@ -94,7 +94,7 @@ public class StatisticCollector
     jdField_a_of_type_AndroidContentContext = paramContext;
     UserAction.setUserID("10000");
     UserAction.initUserAction(jdField_a_of_type_AndroidContentContext, false, paramLong);
-    UserAction.setChannelID("2017");
+    UserAction.setChannelID("10001264");
   }
   
   public static int a()

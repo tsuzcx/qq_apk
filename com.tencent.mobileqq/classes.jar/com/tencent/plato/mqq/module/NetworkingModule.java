@@ -64,7 +64,7 @@ public final class NetworkingModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.plato.mqq.module.NetworkingModule
  * JD-Core Version:    0.7.0.1
  */

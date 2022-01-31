@@ -53,7 +53,7 @@ public class AvatarPendantManager$LruLinkedHashMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.vas.AvatarPendantManager.LruLinkedHashMap
  * JD-Core Version:    0.7.0.1
  */

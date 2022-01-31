@@ -114,9 +114,9 @@ public class Update
             continue;
           }
           a(false);
-          if (!TextUtils.equals("349884", str2))
+          if (!TextUtils.equals("351230", str2))
           {
-            QLog.i("Update", 1, String.format("updateInstallPlugin %s %s %s", new Object[] { str1, str2, String.valueOf("349884") }));
+            QLog.i("Update", 1, String.format("updateInstallPlugin %s %s %s", new Object[] { str1, str2, String.valueOf("351230") }));
             BaseApplicationImpl.isCurrentVersionFirstLaunch = true;
             if (TextUtils.isEmpty(str2)) {
               BaseApplicationImpl.isFirstLaunchNew = true;
@@ -134,7 +134,7 @@ public class Update
               }
               boolean bool2 = Step.AmStepFactory.b(0, this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector, jdField_a_of_type_ArrayOfInt).c();
               QLog.e("AutoMonitor", 1, "UPDATE_STEPS " + bool2);
-              ((SharedPreferences)localObject).edit().putString(str1, "349884").commit();
+              ((SharedPreferences)localObject).edit().putString(str1, "351230").commit();
             }
             SharedPreferencesProxyManager.getInstance().trySave();
           }
@@ -152,12 +152,12 @@ public class Update
         String str2;
         localInterruptedException.printStackTrace();
         continue;
-        if (TextUtils.equals("349884", str2)) {
+        if (TextUtils.equals("351230", str2)) {
           continue;
         }
         a(true);
         continue;
-        localInterruptedException.edit().putString(str1, "349884").commit();
+        localInterruptedException.edit().putString(str1, "351230").commit();
         continue;
       }
       boolean bool1 = true;

@@ -156,7 +156,7 @@ public class WebViewTitleStyleHelper
         break label416;
       }
       str = paramJSONObject.getString("minVersion");
-      if ((TextUtils.isEmpty(str)) || (IndividuationConfigInfo.a(str, "7.6.3.3560"))) {
+      if ((TextUtils.isEmpty(str)) || (IndividuationConfigInfo.a(str, "7.6.3.3565"))) {
         break label416;
       }
       i = 0;
@@ -193,7 +193,7 @@ public class WebViewTitleStyleHelper
         if (!TextUtils.isEmpty(str))
         {
           j = i;
-          if (!IndividuationConfigInfo.a("7.6.3.3560", str)) {
+          if (!IndividuationConfigInfo.a("7.6.3.3565", str)) {
             j = 0;
           }
         }
@@ -235,7 +235,7 @@ public class WebViewTitleStyleHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.webview.WebViewTitleStyleHelper
  * JD-Core Version:    0.7.0.1
  */

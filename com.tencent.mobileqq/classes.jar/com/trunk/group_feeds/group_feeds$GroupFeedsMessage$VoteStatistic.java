@@ -14,7 +14,7 @@ public final class group_feeds$GroupFeedsMessage$VoteStatistic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.trunk.group_feeds.group_feeds.GroupFeedsMessage.VoteStatistic
  * JD-Core Version:    0.7.0.1
  */

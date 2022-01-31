@@ -509,7 +509,7 @@ public class HotPicMainPanel
       bool = true;
       this.jdField_a_of_type_Boolean = bool;
       if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.Panel", 2, "onShow 349884 init panelH " + this.d + " needExtendPanel" + this.jdField_a_of_type_Boolean);
+        QLog.d("HotPicManager.Panel", 2, "onShow 351230 init panelH " + this.d + " needExtendPanel" + this.jdField_a_of_type_Boolean);
       }
       localHotPicManager = HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       localHotPicManager.a(this);
@@ -533,7 +533,7 @@ public class HotPicMainPanel
       if ((i != 0) || (bool))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("HotPicManager.Panel", 2, "onShow 349884 isTempSession is true mSessionInfo.curType is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+          QLog.d("HotPicManager.Panel", 2, "onShow 351230 isTempSession is true mSessionInfo.curType is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
         }
         localObject2 = new ArrayList();
         localObject3 = ((ArrayList)localObject1).iterator();
@@ -759,7 +759,7 @@ public class HotPicMainPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicMainPanel
  * JD-Core Version:    0.7.0.1
  */

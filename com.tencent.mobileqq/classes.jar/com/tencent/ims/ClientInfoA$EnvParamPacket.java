@@ -27,7 +27,7 @@ public final class ClientInfoA$EnvParamPacket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ims.ClientInfoA.EnvParamPacket
  * JD-Core Version:    0.7.0.1
  */

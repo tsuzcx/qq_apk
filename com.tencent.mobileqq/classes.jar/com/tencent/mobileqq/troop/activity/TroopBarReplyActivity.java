@@ -469,7 +469,7 @@ public class TroopBarReplyActivity
             ((JSONObject)localObject2).put("lon", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI.jdField_a_of_type_Int));
           }
           ((JSONObject)localObject2).put("extparam", this.jdField_d_of_type_JavaLangString);
-          ((JSONObject)localObject2).put("version", "7.6.3.3560");
+          ((JSONObject)localObject2).put("version", "7.6.3.3565");
           this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
           NewIntent localNewIntent = new NewIntent(super.getApplicationContext(), ProtoServlet.class);
           if (bool) {
@@ -1609,7 +1609,7 @@ public class TroopBarReplyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarReplyActivity
  * JD-Core Version:    0.7.0.1
  */

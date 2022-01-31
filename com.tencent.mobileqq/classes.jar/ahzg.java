@@ -15,7 +15,7 @@ public class ahzg
 {
   public static int a(ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
   {
-    VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:APPID=" + AppSetting.a + " subVersion=" + "7.6.3" + " buildnum=" + "3560", null);
+    VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:APPID=" + AppSetting.a + " subVersion=" + "7.6.3" + " buildnum=" + "3565", null);
     String str;
     if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_video_"))
     {

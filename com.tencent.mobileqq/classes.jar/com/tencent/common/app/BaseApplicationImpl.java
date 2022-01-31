@@ -97,9 +97,9 @@ public class BaseApplicationImpl
   
   public BaseApplicationImpl()
   {
-    buildNum = "3560";
-    channelId = "2017";
-    reportVersionName = "7.6.3.3560";
+    buildNum = "3565";
+    channelId = "10001264";
+    reportVersionName = "7.6.3.3565";
     APP_ID = AppSetting.a;
   }
   
@@ -185,7 +185,7 @@ public class BaseApplicationImpl
         break label262;
       }
       l = 3000L;
-      QLog.init("com.tencent.mobileqq", paramContext, "V 7.6.3.3560", l);
+      QLog.init("com.tencent.mobileqq", paramContext, "V 7.6.3.3565", l);
       j = TOOL_PROCS.length;
       i = 0;
     }
@@ -288,7 +288,7 @@ public class BaseApplicationImpl
     while (!"channel_id".equals(paramString)) {
       return null;
     }
-    return "2017";
+    return "10001264";
   }
   
   public int getAppId(String paramString)

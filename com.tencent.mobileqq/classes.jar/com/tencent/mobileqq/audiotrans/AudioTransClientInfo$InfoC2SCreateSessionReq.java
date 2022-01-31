@@ -16,7 +16,7 @@ public final class AudioTransClientInfo$InfoC2SCreateSessionReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.audiotrans.AudioTransClientInfo.InfoC2SCreateSessionReq
  * JD-Core Version:    0.7.0.1
  */

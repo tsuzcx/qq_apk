@@ -177,7 +177,7 @@ public class MyBusinessServlet
         paramIntent = ((RespondQueryQQBindingStat)localObject2).mobileNo;
       }
     }
-    paramIntent = new PreLoadCarrierReq(paramIntent, i, 1, "7.6.3.3560", NetworkUtil.a(BaseApplication.getContext()));
+    paramIntent = new PreLoadCarrierReq(paramIntent, i, 1, "7.6.3.3565", NetworkUtil.a(BaseApplication.getContext()));
     paramPacket.setSSOCommand("CarrierBizSvr.preLoadCarrierInfo");
     paramPacket.setServantName("MQQ.CarrierBizServer.CarrierBizObj");
     paramPacket.setFuncName("preLoadCarrierInfo");
@@ -188,7 +188,7 @@ public class MyBusinessServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.mybusiness.MyBusinessServlet
  * JD-Core Version:    0.7.0.1
  */

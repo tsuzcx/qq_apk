@@ -26,7 +26,7 @@ public class agkj
       paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
       paramDialogInterface.append("&plat=1");
       paramDialogInterface.append("&app=1");
-      paramDialogInterface.append("&version=7.6.3.3560");
+      paramDialogInterface.append("&version=7.6.3.3565");
       paramDialogInterface.append("&device=" + URLEncoder.encode(Build.DEVICE));
       paramDialogInterface.append("&system=" + Build.VERSION.RELEASE);
       paramDialogInterface.append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));

@@ -10,7 +10,7 @@ public final class AudioTransClientTransInfo$IntC2SExitSessionReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.audiotrans.AudioTransClientTransInfo.IntC2SExitSessionReq
  * JD-Core Version:    0.7.0.1
  */

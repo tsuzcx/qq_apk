@@ -763,7 +763,7 @@ public class CmGameUtil
           localJSONObject1.put("cpuNumber", ApolloGameStateMachine.HardwareInfo.jdField_a_of_type_Int);
           localJSONObject1.put("cpuFrequency", ApolloGameStateMachine.HardwareInfo.jdField_a_of_type_Long);
           localJSONObject1.put("gameVersion", paramCmGameInitParams.mVersion);
-          localJSONObject1.put("QQVer", "7.6.3.3560");
+          localJSONObject1.put("QQVer", "7.6.3.3565");
           localJSONObject1.put("platform", "android");
           localJSONObject1.put("gameMode", paramCmGameInitParams.mGameMode);
           if (!TextUtils.isEmpty(paramCmGameInitParams.openId)) {

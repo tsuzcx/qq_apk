@@ -700,7 +700,7 @@ public class FFmpeg
     localArrayList.add("-metadata");
     localArrayList.add("title=" + System.currentTimeMillis());
     paramString1 = new StringBuilder();
-    paramString1.append("dev=").append(DeviceInfoUtil.e()).append("/").append("os=").append(DeviceInfoUtil.f()).append("/").append("appVer=").append("V 7.6.3.3560");
+    paramString1.append("dev=").append(DeviceInfoUtil.e()).append("/").append("os=").append(DeviceInfoUtil.f()).append("/").append("appVer=").append("V 7.6.3.3565");
     localArrayList.add("-metadata");
     localArrayList.add("comment=" + paramString1.toString());
     localArrayList.add("-movflags");

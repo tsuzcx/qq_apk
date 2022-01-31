@@ -83,7 +83,7 @@
     <uses-permission android:name="android.permission.READ_APP_BADGE"/>
     <uses-permission android:name="android.permission.READ_PACKAGE_BADGE"/>
     <application android:allowBackup="false" android:debuggable="false" android:icon="@drawable/icon" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0b162c" android:name="com.tencent.common.app.QFixApplicationImpl" android:resizeableActivity="true" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e0319" android:vmSafeMode="false">
-        <meta-data android:name="com.tencent.rdm.uuid" android:value="fd831d36-2860-45a0-8e88-f67f5ec3e5a3"/>
+        <meta-data android:name="com.tencent.rdm.uuid" android:value="45cb3b56-2858-4953-8fe0-c2a7bcfc784f"/>
         <meta-data android:name="TencentOpenAbility" android:value="login_1,logout_1,newmsg_1,msgread_1,msgsend_1,querymsg_1,queryface_1,querynick_1,reg_1,sendmsg_1,setread_1,openaio_1"/>
         <meta-data android:name="TencentMapSDK" android:value="73dfcdeff8636c1d3501fa9a2860ebb7"/>
         <meta-data android:name="TencentGeoLocationSDK" android:value="QQ2013,LWPAH-5CHEJ-Y6CR2-AQPLX-IV2JQ"/>

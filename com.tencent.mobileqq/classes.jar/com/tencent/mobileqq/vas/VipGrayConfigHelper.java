@@ -400,7 +400,7 @@ public class VipGrayConfigHelper
         break label434;
       }
       str = paramJSONObject.getString("minVersion");
-      if ((TextUtils.isEmpty(str)) || (IndividuationConfigInfo.a(str, "7.6.3.3560"))) {
+      if ((TextUtils.isEmpty(str)) || (IndividuationConfigInfo.a(str, "7.6.3.3565"))) {
         break label434;
       }
       i = 0;
@@ -437,7 +437,7 @@ public class VipGrayConfigHelper
         if (!TextUtils.isEmpty(str))
         {
           j = i;
-          if (!IndividuationConfigInfo.a("7.6.3.3560", str)) {
+          if (!IndividuationConfigInfo.a("7.6.3.3565", str)) {
             j = 0;
           }
         }
@@ -516,7 +516,7 @@ public class VipGrayConfigHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VipGrayConfigHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -96,7 +96,7 @@ public class ClubContentUpdateHandler
       Object localObject1 = paramQQAppInterface.getCurrentAccountUin();
       localReqBody.int_protocolver.set(1);
       localReqBody.uint_clientplatid.set(109);
-      localReqBody.str_clientver.set("7.6.3.3560");
+      localReqBody.str_clientver.set("7.6.3.3565");
       localReqBody.uint_uin.set(Long.parseLong((String)localObject1));
       ArrayList localArrayList1 = new ArrayList();
       int i = paramQQAppInterface.getApp().getSharedPreferences("sigResUpt", 0).getInt("sigTplCfgVer", 0);
@@ -1094,7 +1094,7 @@ public class ClubContentUpdateHandler
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     localReqBody.int_protocolver.set(1);
     localReqBody.uint_clientplatid.set(109);
-    localReqBody.str_clientver.set("7.6.3.3560");
+    localReqBody.str_clientver.set("7.6.3.3565");
     localReqBody.uint_uin.set(Long.parseLong((String)localObject));
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(b());

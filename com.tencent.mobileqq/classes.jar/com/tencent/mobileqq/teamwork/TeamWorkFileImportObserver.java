@@ -32,7 +32,7 @@ public class TeamWorkFileImportObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportObserver
  * JD-Core Version:    0.7.0.1
  */

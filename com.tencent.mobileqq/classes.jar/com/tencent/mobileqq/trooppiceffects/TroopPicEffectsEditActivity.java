@@ -260,7 +260,7 @@ public class TroopPicEffectsEditActivity
     long l = Long.parseLong(this.b);
     localUser.uint64_group.set(l);
     localUser.uint32_client.set(1);
-    localUser.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.3.3560".getBytes()), true);
+    localUser.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.3.3565".getBytes()), true);
     localUser.uint32_portal.set(600);
     oidb_cmd0x991.LoginSig localLoginSig = new oidb_cmd0x991.LoginSig();
     localLoginSig.uint32_type.set(1);
@@ -442,7 +442,7 @@ public class TroopPicEffectsEditActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity
  * JD-Core Version:    0.7.0.1
  */

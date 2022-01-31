@@ -520,7 +520,7 @@ public class SVIPHandler
     localTFontSsoReq.u64_seq.set(((Random)localObject).nextInt(1000));
     localTFontSsoReq.i32_implat.set(109);
     localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
-    localTFontSsoReq.str_mqqver.set("7.6.3.3560");
+    localTFontSsoReq.str_mqqver.set("7.6.3.3565");
     localObject = new VipFontUpdate.TDiyFontReq();
     Iterator localIterator = paramMap.keySet().iterator();
     while (localIterator.hasNext())
@@ -569,7 +569,7 @@ public class SVIPHandler
     localTFontSsoReq.u64_seq.set(((Random)localObject1).nextInt(1000));
     localTFontSsoReq.i32_implat.set(109);
     localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
-    localTFontSsoReq.str_mqqver.set("7.6.3.3560");
+    localTFontSsoReq.str_mqqver.set("7.6.3.3565");
     localObject1 = new VipFontUpdate.TFontFreshReq();
     ((VipFontUpdate.TFontFreshReq)localObject1).i32_local_font_id.set(a());
     localTFontSsoReq.st_fresh_req.set((MessageMicro)localObject1);

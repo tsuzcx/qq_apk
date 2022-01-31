@@ -48,7 +48,7 @@ public class NumRedMsgHandler
     NumRedMsg.NumMsgReqBody localNumMsgReqBody = new NumRedMsg.NumMsgReqBody();
     localNumMsgReqBody.i_proto_ver.set(1);
     localNumMsgReqBody.ui_plat_id.set(109);
-    localNumMsgReqBody.str_client_ver.set("7.6.3.3560");
+    localNumMsgReqBody.str_client_ver.set("7.6.3.3565");
     localNumMsgReqBody.ui64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(paramList);

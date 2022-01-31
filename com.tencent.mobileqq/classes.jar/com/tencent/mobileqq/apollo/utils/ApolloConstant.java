@@ -129,7 +129,7 @@ public class ApolloConstant
     K = "http://cmshow.qq.com/apollo/html/not_support.html?_wv=1027";
     L = "http://cmshow.qq.com/apollo/html/intro.html?_wv=1027&_bid=2326&actionId=";
     StringBuilder localStringBuilder = new StringBuilder("http://cmshow.qq.com/apollo/html/index_v2.html");
-    localStringBuilder.append("?client=androidQQ").append("&version=").append("7.6.3.3560").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE);
+    localStringBuilder.append("?client=androidQQ").append("&version=").append("7.6.3.3565").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE);
     M = localStringBuilder.toString();
     N = "http://cmshow.qq.com/apollo/html/game-platform/index.html?_wv=16777219&_bid=2695&adtag=aio";
     O = "http://cmshow.qq.com/apollo/html/game-platform/my-coins.html?_wv=1027&_bid=2695&adtag=aio";

@@ -177,48 +177,10 @@ public class LoveLanguageManager
   public static String b(String paramString)
   {
     long l = System.currentTimeMillis();
-    int i = 0;
-    int k = paramString.length();
-    int j = 0;
-    int m;
-    if (j < k)
-    {
-      if ((paramString.charAt(j) != '\021') || (paramString.charAt(j) != '\021')) {
-        break label229;
-      }
-      StringBuilder localStringBuilder = new StringBuilder(128);
-      if ((j >= k - 3) || (!LoveLanguageConfig.a(paramString.charAt(j + 1)))) {
-        break label229;
-      }
-      k = j + 4;
-      String str2 = LoveLanguageConfig.a(paramString.substring(j, k));
-      String str3 = paramString.substring(0, j);
-      String str1 = "";
-      if (k <= paramString.length() - 1) {
-        str1 = paramString.substring(k, paramString.length());
-      }
-      localStringBuilder.append(str3).append(str2).append(str1);
-      paramString = localStringBuilder.toString();
-      m = paramString.length();
-      k = str2.length() + j - 1;
-      j = m;
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoveLanguageManager", 2, new Object[] { "love language handleLoveLanguageCodeString count = ", Integer.valueOf(0), ",cost =", Long.valueOf(Math.abs(System.currentTimeMillis() - l)) });
     }
-    for (;;)
-    {
-      m = k + 1;
-      k = j;
-      j = m;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("LoveLanguageManager", 2, new Object[] { "love language handleLoveLanguageCodeString count = ", Integer.valueOf(i), ",cost =", Long.valueOf(Math.abs(System.currentTimeMillis() - l)) });
-      }
-      return paramString;
-      label229:
-      m = k;
-      k = j;
-      j = m;
-    }
+    return paramString;
   }
   
   public static boolean b(String paramString)
@@ -242,51 +204,14 @@ public class LoveLanguageManager
   public int a(EditText paramEditText)
   {
     this.d = false;
-    Object localObject1 = paramEditText.getText().toString();
+    paramEditText = paramEditText.getText().toString();
     long l = System.currentTimeMillis();
-    int n = ((String)localObject1).length();
-    int i = 0;
-    int k;
-    for (int j = 0; i < n; j = k)
-    {
-      int i1 = i;
-      int m = n;
-      Object localObject2 = localObject1;
-      k = j;
-      if (((String)localObject1).charAt(i) == '\021')
-      {
-        i1 = i;
-        m = n;
-        localObject2 = localObject1;
-        k = j;
-        if (i < n - 3)
-        {
-          i1 = i;
-          m = n;
-          localObject2 = localObject1;
-          k = j;
-          if (LoveLanguageConfig.a(((String)localObject1).charAt(i + 1)))
-          {
-            k = i + 4;
-            localObject1 = LoveLanguageConfig.a(((String)localObject1).substring(i, k));
-            paramEditText.getEditableText().replace(i, k, (CharSequence)localObject1);
-            localObject2 = paramEditText.getText().toString();
-            m = ((String)localObject2).length();
-            i1 = i + ((String)localObject1).length() - 1;
-            k = j + 1;
-          }
-        }
-      }
-      i = i1 + 1;
-      n = m;
-      localObject1 = localObject2;
-    }
     this.d = true;
     if (QLog.isColorLevel()) {
-      QLog.d("LoveLanguageManager", 2, new Object[] { "love language handleLoveLanguageRevert count = ", Integer.valueOf(j), ",cost =", Long.valueOf(Math.abs(System.currentTimeMillis() - l)), ",send:", localObject1 });
+      QLog.d("LoveLanguageManager", 2, new Object[] { "love language handleLoveLanguageRevert count = ", Integer.valueOf(0), ",cost =", Long.valueOf(Math.abs(System.currentTimeMillis() - l)), ",send:", paramEditText });
     }
     a();
-    return j;
+    return 0;
   }
   
   public void a(EditText paramEditText)
@@ -466,7 +391,7 @@ public class LoveLanguageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.lovelanguage.LoveLanguageManager
  * JD-Core Version:    0.7.0.1
  */

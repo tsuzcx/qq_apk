@@ -238,7 +238,7 @@ public class VasWebReport
             localObject = paramJSONObject.optString("website_address");
             int n = NetUtil.a(null);
             if (QLog.isColorLevel()) {
-              QLog.i("PublicAccountWebReport", 2, "urlStr: " + str3 + ",errorcode:" + m + ",netType:" + n + ",DNSCost" + i + ",connectCost:" + j + ",receiveCost:" + k + ",website_address:" + (String)localObject + ",AppSetting.subVersion:" + "7.6.3,3,3560");
+              QLog.i("PublicAccountWebReport", 2, "urlStr: " + str3 + ",errorcode:" + m + ",netType:" + n + ",DNSCost" + i + ",connectCost:" + j + ",receiveCost:" + k + ",website_address:" + (String)localObject + ",AppSetting.subVersion:" + "7.6.3,3,3565");
             }
           }
           if (!str2.equalsIgnoreCase(str1)) {
@@ -501,7 +501,7 @@ public class VasWebReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasWebReport
  * JD-Core Version:    0.7.0.1
  */

@@ -193,14 +193,14 @@ public class ColorRingPlayer
     //   73: putfield 41	com/tencent/mobileqq/vas/ColorRingPlayer:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   76: aload_0
     //   77: getfield 37	com/tencent/mobileqq/vas/ColorRingPlayer:jdField_a_of_type_Akho	Lakho;
-    //   80: astore 4
-    //   82: aload 4
+    //   80: astore 6
+    //   82: aload 6
     //   84: monitorenter
     //   85: aload_0
     //   86: getfield 37	com/tencent/mobileqq/vas/ColorRingPlayer:jdField_a_of_type_Akho	Lakho;
     //   89: iconst_4
     //   90: putfield 178	akho:jdField_a_of_type_Int	I
-    //   93: aload 4
+    //   93: aload 6
     //   95: monitorexit
     //   96: lload_1
     //   97: lconst_0
@@ -216,8 +216,8 @@ public class ColorRingPlayer
     //   118: ifnonnull +118 -> 236
     //   121: aload_0
     //   122: getfield 39	com/tencent/mobileqq/vas/ColorRingPlayer:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   125: astore 6
-    //   127: aload 6
+    //   125: astore 5
+    //   127: aload 5
     //   129: monitorenter
     //   130: aload_0
     //   131: getfield 41	com/tencent/mobileqq/vas/ColorRingPlayer:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
@@ -225,7 +225,7 @@ public class ColorRingPlayer
     //   137: aload_0
     //   138: aconst_null
     //   139: putfield 41	com/tencent/mobileqq/vas/ColorRingPlayer:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   142: aload 6
+    //   142: aload 5
     //   144: monitorexit
     //   145: invokestatic 232	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   148: ifeq +11 -> 159
@@ -243,10 +243,10 @@ public class ColorRingPlayer
     //   174: monitorexit
     //   175: aload 5
     //   177: athrow
-    //   178: astore 6
-    //   180: aload 4
+    //   178: astore 4
+    //   180: aload 6
     //   182: monitorexit
-    //   183: aload 6
+    //   183: aload 4
     //   185: athrow
     //   186: astore 5
     //   188: aconst_null
@@ -262,10 +262,10 @@ public class ColorRingPlayer
     //   209: aload 4
     //   211: invokevirtual 262	java/lang/Exception:printStackTrace	()V
     //   214: return
-    //   215: astore 5
-    //   217: aload 6
+    //   215: astore 6
+    //   217: aload 5
     //   219: monitorexit
-    //   220: aload 5
+    //   220: aload 6
     //   222: athrow
     //   223: astore 5
     //   225: goto -34 -> 191
@@ -416,22 +416,23 @@ public class ColorRingPlayer
     //   0	534	0	this	ColorRingPlayer
     //   0	534	1	paramLong	long
     //   0	534	3	paramInt	int
-    //   38	164	4	localObject1	Object
+    //   38	135	4	localObject1	Object
+    //   178	6	4	localObject2	Object
+    //   189	13	4	localObject3	Object
     //   207	3	4	localException1	Exception
     //   228	31	4	localException2	Exception
     //   283	96	4	localAudioManager	AudioManager
     //   410	3	4	localException3	Exception
-    //   475	36	4	localObject3	Object
-    //   516	14	4	localObject4	Object
-    //   1	1	5	localObject5	Object
-    //   170	6	5	localObject6	Object
-    //   186	6	5	localIOException1	java.io.IOException
-    //   215	6	5	localObject7	Object
+    //   475	36	4	localObject5	Object
+    //   516	14	4	localObject6	Object
+    //   1	142	5	localObject7	Object
+    //   170	6	5	localObject8	Object
+    //   186	32	5	localIOException1	java.io.IOException
     //   223	260	5	localIOException2	java.io.IOException
     //   498	3	5	localException4	Exception
-    //   512	14	5	localObject8	Object
-    //   125	18	6	localObject9	Object
-    //   178	40	6	localObject10	Object
+    //   512	14	5	localObject9	Object
+    //   80	101	6	localakho	akho
+    //   215	6	6	localObject10	Object
     //   490	6	6	localObject11	Object
     //   508	7	6	localObject12	Object
     //   521	7	6	localObject13	Object
@@ -975,7 +976,7 @@ public class ColorRingPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorRingPlayer
  * JD-Core Version:    0.7.0.1
  */

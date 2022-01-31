@@ -30,7 +30,7 @@ class ahzs
     try
     {
       Properties localProperties = new Properties();
-      localProperties.put("version", "7.6.3.3560");
+      localProperties.put("version", "7.6.3.3565");
       localProperties.put("appid", String.valueOf(AppSetting.a));
       localProperties.put("release", String.valueOf(true));
       localProperties.put("name", paramString);

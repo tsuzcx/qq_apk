@@ -16,7 +16,7 @@ public final class mobileqq_mp$JSApiWebServerRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.mp.mobileqq_mp.JSApiWebServerRequest
  * JD-Core Version:    0.7.0.1
  */

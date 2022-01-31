@@ -5408,47 +5408,49 @@ public class FileManagerUtil
     //   277: areturn
     //   278: astore_0
     //   279: aconst_null
-    //   280: astore 4
-    //   282: aload 4
-    //   284: ifnull +8 -> 292
-    //   287: aload 4
-    //   289: invokevirtual 2499	java/io/InputStream:close	()V
+    //   280: astore_0
+    //   281: aload_0
+    //   282: ifnull +7 -> 289
+    //   285: aload_0
+    //   286: invokevirtual 2499	java/io/InputStream:close	()V
+    //   289: aconst_null
+    //   290: areturn
+    //   291: astore_0
     //   292: aconst_null
-    //   293: areturn
-    //   294: astore_0
-    //   295: aconst_null
-    //   296: astore 4
-    //   298: aload 4
-    //   300: ifnull -8 -> 292
-    //   303: aload 4
-    //   305: invokevirtual 2499	java/io/InputStream:close	()V
-    //   308: goto -16 -> 292
-    //   311: astore_0
-    //   312: goto -20 -> 292
-    //   315: astore_0
-    //   316: aconst_null
-    //   317: astore 4
-    //   319: aload 4
-    //   321: ifnull +8 -> 329
-    //   324: aload 4
-    //   326: invokevirtual 2499	java/io/InputStream:close	()V
-    //   329: aload_0
-    //   330: athrow
+    //   293: astore 4
+    //   295: aload 4
+    //   297: ifnull -8 -> 289
+    //   300: aload 4
+    //   302: invokevirtual 2499	java/io/InputStream:close	()V
+    //   305: goto -16 -> 289
+    //   308: astore_0
+    //   309: goto -20 -> 289
+    //   312: astore_0
+    //   313: aconst_null
+    //   314: astore 4
+    //   316: aload 4
+    //   318: ifnull +8 -> 326
+    //   321: aload 4
+    //   323: invokevirtual 2499	java/io/InputStream:close	()V
+    //   326: aload_0
+    //   327: athrow
+    //   328: astore_0
+    //   329: aconst_null
+    //   330: areturn
     //   331: astore_0
-    //   332: aconst_null
-    //   333: areturn
-    //   334: astore_0
-    //   335: goto -106 -> 229
-    //   338: astore_0
-    //   339: goto -47 -> 292
-    //   342: astore 4
-    //   344: goto -15 -> 329
-    //   347: astore_0
-    //   348: goto -29 -> 319
-    //   351: astore_0
-    //   352: goto -54 -> 298
+    //   332: goto -103 -> 229
+    //   335: astore_0
+    //   336: goto -47 -> 289
+    //   339: astore 4
+    //   341: goto -15 -> 326
+    //   344: astore_0
+    //   345: goto -29 -> 316
+    //   348: astore_0
+    //   349: goto -54 -> 295
+    //   352: astore_0
+    //   353: aload 4
     //   355: astore_0
-    //   356: goto -74 -> 282
+    //   356: goto -75 -> 281
     //   359: iload_1
     //   360: bipush 8
     //   362: if_icmpge -152 -> 210
@@ -5483,8 +5485,8 @@ public class FileManagerUtil
     //   67	327	1	i	int
     //   72	301	2	l	long
     //   29	3	4	localNoSuchAlgorithmException	java.security.NoSuchAlgorithmException
-    //   57	268	4	localBufferedInputStream	java.io.BufferedInputStream
-    //   342	1	4	localIOException	IOException
+    //   57	265	4	localBufferedInputStream	java.io.BufferedInputStream
+    //   339	15	4	localIOException	IOException
     //   6	253	5	localObject	Object
     //   64	122	6	arrayOfByte	byte[]
     // Exception table:
@@ -5495,49 +5497,49 @@ public class FileManagerUtil
     //   0	8	278	java/io/FileNotFoundException
     //   31	36	278	java/io/FileNotFoundException
     //   42	59	278	java/io/FileNotFoundException
-    //   0	8	294	java/io/IOException
-    //   31	36	294	java/io/IOException
-    //   42	59	294	java/io/IOException
-    //   303	308	311	java/io/IOException
-    //   0	8	315	finally
-    //   31	36	315	finally
-    //   42	59	315	finally
-    //   19	27	331	java/io/IOException
-    //   224	229	334	java/io/IOException
-    //   287	292	338	java/io/IOException
-    //   324	329	342	java/io/IOException
-    //   59	66	347	finally
-    //   68	73	347	finally
-    //   80	95	347	finally
-    //   102	121	347	finally
-    //   130	145	347	finally
-    //   152	169	347	finally
-    //   178	193	347	finally
-    //   200	205	347	finally
-    //   210	219	347	finally
-    //   224	229	347	finally
-    //   234	241	347	finally
-    //   59	66	351	java/io/IOException
-    //   68	73	351	java/io/IOException
-    //   80	95	351	java/io/IOException
-    //   102	121	351	java/io/IOException
-    //   130	145	351	java/io/IOException
-    //   152	169	351	java/io/IOException
-    //   178	193	351	java/io/IOException
-    //   200	205	351	java/io/IOException
-    //   210	219	351	java/io/IOException
-    //   234	241	351	java/io/IOException
-    //   59	66	355	java/io/FileNotFoundException
-    //   68	73	355	java/io/FileNotFoundException
-    //   80	95	355	java/io/FileNotFoundException
-    //   102	121	355	java/io/FileNotFoundException
-    //   130	145	355	java/io/FileNotFoundException
-    //   152	169	355	java/io/FileNotFoundException
-    //   178	193	355	java/io/FileNotFoundException
-    //   200	205	355	java/io/FileNotFoundException
-    //   210	219	355	java/io/FileNotFoundException
-    //   224	229	355	java/io/FileNotFoundException
-    //   234	241	355	java/io/FileNotFoundException
+    //   0	8	291	java/io/IOException
+    //   31	36	291	java/io/IOException
+    //   42	59	291	java/io/IOException
+    //   300	305	308	java/io/IOException
+    //   0	8	312	finally
+    //   31	36	312	finally
+    //   42	59	312	finally
+    //   19	27	328	java/io/IOException
+    //   224	229	331	java/io/IOException
+    //   285	289	335	java/io/IOException
+    //   321	326	339	java/io/IOException
+    //   59	66	344	finally
+    //   68	73	344	finally
+    //   80	95	344	finally
+    //   102	121	344	finally
+    //   130	145	344	finally
+    //   152	169	344	finally
+    //   178	193	344	finally
+    //   200	205	344	finally
+    //   210	219	344	finally
+    //   224	229	344	finally
+    //   234	241	344	finally
+    //   59	66	348	java/io/IOException
+    //   68	73	348	java/io/IOException
+    //   80	95	348	java/io/IOException
+    //   102	121	348	java/io/IOException
+    //   130	145	348	java/io/IOException
+    //   152	169	348	java/io/IOException
+    //   178	193	348	java/io/IOException
+    //   200	205	348	java/io/IOException
+    //   210	219	348	java/io/IOException
+    //   234	241	348	java/io/IOException
+    //   59	66	352	java/io/FileNotFoundException
+    //   68	73	352	java/io/FileNotFoundException
+    //   80	95	352	java/io/FileNotFoundException
+    //   102	121	352	java/io/FileNotFoundException
+    //   130	145	352	java/io/FileNotFoundException
+    //   152	169	352	java/io/FileNotFoundException
+    //   178	193	352	java/io/FileNotFoundException
+    //   200	205	352	java/io/FileNotFoundException
+    //   210	219	352	java/io/FileNotFoundException
+    //   224	229	352	java/io/FileNotFoundException
+    //   234	241	352	java/io/FileNotFoundException
   }
   
   public static int c(FileManagerEntity paramFileManagerEntity)

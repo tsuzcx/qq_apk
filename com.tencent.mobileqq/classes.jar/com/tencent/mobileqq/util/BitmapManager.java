@@ -219,9 +219,9 @@ public class BitmapManager
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 9
+    //   1: astore 10
     //   3: aconst_null
-    //   4: astore 8
+    //   4: astore 9
     //   6: aconst_null
     //   7: astore 5
     //   9: aconst_null
@@ -229,7 +229,7 @@ public class BitmapManager
     //   12: aconst_null
     //   13: astore 6
     //   15: aconst_null
-    //   16: astore 10
+    //   16: astore 8
     //   18: invokestatic 52	com/tencent/mobileqq/util/BitmapManager:a	()V
     //   21: new 267	java/io/File
     //   24: dup
@@ -265,21 +265,21 @@ public class BitmapManager
     //   86: invokespecial 296	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   89: astore 4
     //   91: aload 5
-    //   93: astore 8
+    //   93: astore 9
     //   95: aload 7
-    //   97: astore 9
+    //   97: astore 10
     //   99: aload 6
-    //   101: astore 10
+    //   101: astore 8
     //   103: aload 11
     //   105: invokevirtual 299	java/io/File:length	()J
     //   108: l2i
     //   109: istore_3
     //   110: aload 5
-    //   112: astore 8
+    //   112: astore 9
     //   114: aload 7
-    //   116: astore 9
+    //   116: astore 10
     //   118: aload 6
-    //   120: astore 10
+    //   120: astore 8
     //   122: invokestatic 282	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   125: iload_3
     //   126: invokevirtual 303	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
@@ -289,11 +289,11 @@ public class BitmapManager
     //   135: aload 4
     //   137: astore 6
     //   139: aload 7
-    //   141: astore 8
+    //   141: astore 9
     //   143: aload 7
-    //   145: astore 9
+    //   145: astore 10
     //   147: aload 7
-    //   149: astore 10
+    //   149: astore 8
     //   151: iload_3
     //   152: aload 4
     //   154: aload 7
@@ -304,11 +304,11 @@ public class BitmapManager
     //   166: aload 4
     //   168: astore 6
     //   170: aload 7
-    //   172: astore 8
+    //   172: astore 9
     //   174: aload 7
-    //   176: astore 9
+    //   176: astore 10
     //   178: aload 7
-    //   180: astore 10
+    //   180: astore 8
     //   182: aload_2
     //   183: iconst_3
     //   184: putfield 106	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
@@ -327,11 +327,11 @@ public class BitmapManager
     //   215: aload 4
     //   217: astore 6
     //   219: aload 7
-    //   221: astore 8
+    //   221: astore 9
     //   223: aload 7
-    //   225: astore 9
+    //   225: astore 10
     //   227: aload 7
-    //   229: astore 10
+    //   229: astore 8
     //   231: aload_2
     //   232: aload 7
     //   234: iconst_0
@@ -372,7 +372,7 @@ public class BitmapManager
     //   308: astore_1
     //   309: aconst_null
     //   310: astore 4
-    //   312: aload 10
+    //   312: aload 8
     //   314: astore 5
     //   316: aload 4
     //   318: astore 6
@@ -383,16 +383,16 @@ public class BitmapManager
     //   327: ifnull +8 -> 335
     //   330: aload 4
     //   332: invokevirtual 312	java/io/InputStream:close	()V
-    //   335: aload 10
+    //   335: aload 8
     //   337: ifnull -69 -> 268
     //   340: invokestatic 282	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   343: aload 10
+    //   343: aload 8
     //   345: invokevirtual 286	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   348: goto -80 -> 268
     //   351: astore_1
     //   352: aconst_null
     //   353: astore 4
-    //   355: aload 9
+    //   355: aload 10
     //   357: astore 5
     //   359: aload 4
     //   361: astore 6
@@ -403,16 +403,16 @@ public class BitmapManager
     //   370: ifnull +8 -> 378
     //   373: aload 4
     //   375: invokevirtual 312	java/io/InputStream:close	()V
-    //   378: aload 9
+    //   378: aload 10
     //   380: ifnull -112 -> 268
     //   383: invokestatic 282	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   386: aload 9
+    //   386: aload 10
     //   388: invokevirtual 286	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   391: goto -123 -> 268
     //   394: astore_1
     //   395: aconst_null
     //   396: astore 4
-    //   398: aload 8
+    //   398: aload 9
     //   400: astore 5
     //   402: aload 4
     //   404: astore 6
@@ -423,10 +423,10 @@ public class BitmapManager
     //   413: ifnull +8 -> 421
     //   416: aload 4
     //   418: invokevirtual 312	java/io/InputStream:close	()V
-    //   421: aload 8
+    //   421: aload 9
     //   423: ifnull -155 -> 268
     //   426: invokestatic 282	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   429: aload 8
+    //   429: aload 9
     //   431: invokevirtual 286	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   434: goto -166 -> 268
     //   437: astore_0
@@ -487,9 +487,9 @@ public class BitmapManager
     //   7	498	5	localObject1	Object
     //   13	489	6	localObject2	Object
     //   10	254	7	arrayOfByte	byte[]
-    //   4	426	8	localObject3	Object
-    //   1	386	9	localObject4	Object
-    //   16	328	10	localObject5	Object
+    //   16	328	8	localObject3	Object
+    //   4	426	9	localObject4	Object
+    //   1	386	10	localObject5	Object
     //   29	75	11	localFile	java.io.File
     // Exception table:
     //   from	to	target	type

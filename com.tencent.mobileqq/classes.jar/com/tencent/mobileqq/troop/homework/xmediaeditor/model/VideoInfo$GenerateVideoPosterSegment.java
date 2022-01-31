@@ -36,26 +36,26 @@ public class VideoInfo$GenerateVideoPosterSegment
     }
     String str2 = ImageInfo.b();
     MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    String str1 = null;
     Object localObject4 = null;
+    String str1 = null;
     Bitmap localBitmap2 = null;
     Bitmap localBitmap1 = localBitmap2;
-    Object localObject3 = str1;
-    Object localObject1 = localObject4;
+    Object localObject3 = localObject4;
+    Object localObject1 = str1;
     for (;;)
     {
       try
       {
         localMediaMetadataRetriever.setDataSource(paramVideoInfo.f);
         localBitmap1 = localBitmap2;
-        localObject3 = str1;
-        localObject1 = localObject4;
+        localObject3 = localObject4;
+        localObject1 = str1;
         localBitmap3 = localMediaMetadataRetriever.getFrameAtTime(-1L);
         if (localBitmap3 == null)
         {
           localBitmap1 = localBitmap2;
-          localObject3 = str1;
-          localObject1 = localObject4;
+          localObject3 = localObject4;
+          localObject1 = str1;
           notifyError(new Error("-201"));
         }
       }
@@ -139,12 +139,12 @@ public class VideoInfo$GenerateVideoPosterSegment
       }
       catch (RuntimeException paramJobContext) {}
       localBitmap1 = localBitmap2;
-      localObject3 = str1;
-      localObject1 = localObject4;
+      localObject3 = localObject4;
+      localObject1 = str1;
       arrayOfInt = ImageItem.a(this.jdField_a_of_type_Int, 200, 300, paramVideoInfo.jdField_a_of_type_Int, paramVideoInfo.b);
       localBitmap1 = localBitmap2;
-      localObject3 = str1;
-      localObject1 = localObject4;
+      localObject3 = localObject4;
+      localObject1 = str1;
       localBitmap2 = ThumbnailUtils.extractThumbnail(localBitmap3, arrayOfInt[0], arrayOfInt[1]);
       if (localBitmap2 == null)
       {
@@ -222,7 +222,7 @@ public class VideoInfo$GenerateVideoPosterSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo.GenerateVideoPosterSegment
  * JD-Core Version:    0.7.0.1
  */

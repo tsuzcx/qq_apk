@@ -20,7 +20,7 @@ public final class WeatherReportInfo$GetWeatherByLbsRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.jungle.weather.proto.WeatherReportInfo.GetWeatherByLbsRsp
  * JD-Core Version:    0.7.0.1
  */

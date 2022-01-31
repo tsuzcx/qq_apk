@@ -647,7 +647,7 @@ public class RedpointHandler
     BusinessInfoCheckUpdate.TimeReqBody localTimeReqBody = new BusinessInfoCheckUpdate.TimeReqBody();
     localTimeReqBody.iProtocolVer.set(1);
     localTimeReqBody.uiClientPlatID.set(109);
-    localTimeReqBody.sClientVer.set("7.6.3.3560");
+    localTimeReqBody.sClientVer.set("7.6.3.3565");
     localTimeReqBody.uiUin.set(Long.parseLong(this.b.getCurrentAccountUin()));
     int i = NetworkUtil.a(BaseApplication.getContext());
     localTimeReqBody.uiNetType.set(i);

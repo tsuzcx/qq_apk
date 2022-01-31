@@ -27,7 +27,7 @@ public class QQStoryConstant
   
   static
   {
-    jdField_a_of_type_Boolean = "V 7.6.3.3560".contains("r");
+    jdField_a_of_type_Boolean = "V 7.6.3.3565".contains("r");
     jdField_a_of_type_JavaLangString = AppConstants.aJ + "qqstory/";
   }
   

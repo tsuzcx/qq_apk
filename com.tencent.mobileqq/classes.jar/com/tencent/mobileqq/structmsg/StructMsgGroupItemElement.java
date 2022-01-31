@@ -522,7 +522,7 @@ public class StructMsgGroupItemElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgGroupItemElement
  * JD-Core Version:    0.7.0.1
  */

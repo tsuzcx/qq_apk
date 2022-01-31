@@ -43,7 +43,7 @@ public class AvatarPendantUiPlugin
       paramString = null;
       return paramString;
     }
-    String str = paramString.replace("[client]", "androidQQ").replace("[version]", "7.6.3.3560").replace("[system]", Build.VERSION.RELEASE).replace("[device]", Build.DEVICE);
+    String str = paramString.replace("[client]", "androidQQ").replace("[version]", "7.6.3.3565").replace("[system]", Build.VERSION.RELEASE).replace("[device]", Build.DEVICE);
     Intent localIntent = super.getInfoIntent();
     if (localIntent.getBooleanExtra("key_update_flag", false)) {}
     for (paramString = "1";; paramString = "0")
@@ -186,7 +186,7 @@ public class AvatarPendantUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantUiPlugin
  * JD-Core Version:    0.7.0.1
  */

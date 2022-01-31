@@ -7203,10 +7203,10 @@ public class JumpAction
       {
         if ((this.n != null) && (this.n.trim().equalsIgnoreCase("com.qq.yijianfankui")))
         {
-          localStringBuffer.append("&version=7.6.3.3560");
+          localStringBuffer.append("&version=7.6.3.3565");
           localStringBuffer.append("&appid=" + AppSetting.jdField_a_of_type_Int);
           localStringBuffer.append("&QUA=" + QUA.a());
-          localStringBuffer.append("&adtag=3560");
+          localStringBuffer.append("&adtag=3565");
           localObject2 = Build.MODEL;
           if (localObject2 == null) {
             break label1903;
@@ -9557,7 +9557,7 @@ public class JumpAction
                         localObject1 = (String)localObject4 + "?";
                       }
                       localObject4 = new StringBuilder((String)localObject1);
-                      localObject5 = ((StringBuilder)localObject4).append("&client=androidQQ").append("&uin=").append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).append("&version=").append("7.6.3.3560").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&density=").append(ThemeUtil.getThemeDensity(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())).append("&platformId=2").append("&_lv=0").append("&hasRedDot=");
+                      localObject5 = ((StringBuilder)localObject4).append("&client=androidQQ").append("&uin=").append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).append("&version=").append("7.6.3.3565").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&density=").append(ThemeUtil.getThemeDensity(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())).append("&platformId=2").append("&_lv=0").append("&hasRedDot=");
                       if (this.jdField_d_of_type_Boolean) {}
                       for (localObject1 = "1";; localObject1 = "0")
                       {

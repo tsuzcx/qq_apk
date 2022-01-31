@@ -652,7 +652,7 @@ public class SensorAPIJavaScript
   
   public final String getClientInfo()
   {
-    return "{\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "3560" + "\"}";
+    return "{\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "3565" + "\"}";
   }
   
   public boolean getCurrentSong(String paramString)

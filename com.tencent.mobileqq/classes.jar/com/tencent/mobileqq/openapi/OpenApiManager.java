@@ -291,16 +291,16 @@ public class OpenApiManager
     //   123: aload_1
     //   124: aload 5
     //   126: invokevirtual 357	com/tencent/mobileqq/openapi/entity/ThirdPartyApp:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   129: astore_3
+    //   129: astore_1
     //   130: lconst_0
     //   131: lstore 13
-    //   133: aload_3
+    //   133: aload_1
     //   134: invokestatic 363	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   137: lstore 11
     //   139: aload_2
     //   140: invokestatic 369	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   143: ifne +17 -> 160
-    //   146: aload_3
+    //   146: aload_1
     //   147: invokestatic 369	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   150: ifne +10 -> 160
     //   153: lload 11
@@ -315,7 +315,7 @@ public class OpenApiManager
     //   170: invokestatic 336	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   173: invokespecial 339	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   176: areturn
-    //   177: astore_1
+    //   177: astore_3
     //   178: lload 13
     //   180: lstore 11
     //   182: invokestatic 282	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -323,7 +323,7 @@ public class OpenApiManager
     //   188: ldc 16
     //   190: iconst_2
     //   191: ldc_w 371
-    //   194: aload_1
+    //   194: aload_3
     //   195: invokestatic 374	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   198: lload 13
     //   200: lstore 11

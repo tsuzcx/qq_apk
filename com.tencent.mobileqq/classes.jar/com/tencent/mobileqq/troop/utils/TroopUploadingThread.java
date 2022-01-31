@@ -230,10 +230,10 @@ public class TroopUploadingThread
     //   34: arraylength
     //   35: istore 8
     //   37: iconst_0
-    //   38: istore 6
+    //   38: istore 5
     //   40: iconst_0
-    //   41: istore 5
-    //   43: iload 5
+    //   41: istore 6
+    //   43: iload 6
     //   45: iload 8
     //   47: if_icmpge +195 -> 242
     //   50: aload_3
@@ -263,7 +263,7 @@ public class TroopUploadingThread
     //   96: iconst_m1
     //   97: ireturn
     //   98: iload 8
-    //   100: iload 5
+    //   100: iload 6
     //   102: isub
     //   103: sipush 10240
     //   106: if_icmple +89 -> 195
@@ -271,23 +271,23 @@ public class TroopUploadingThread
     //   112: istore 7
     //   114: aload 9
     //   116: aload_1
-    //   117: iload 5
+    //   117: iload 6
     //   119: iload 7
     //   121: invokevirtual 186	java/io/DataOutputStream:write	([BII)V
-    //   124: iload 5
+    //   124: iload 6
     //   126: iload 7
     //   128: iadd
-    //   129: istore 5
-    //   131: iload 5
+    //   129: istore 6
+    //   131: iload 6
     //   133: bipush 100
     //   135: imul
     //   136: iload 8
     //   138: idiv
-    //   139: iload 6
+    //   139: iload 5
     //   141: isub
     //   142: ifle +40 -> 182
     //   145: aload_3
-    //   146: iload 6
+    //   146: iload 5
     //   148: putfield 188	com/tencent/mobileqq/troop/utils/UploadItem:jdField_a_of_type_Int	I
     //   151: new 102	com/tencent/mobileqq/troop/utils/TroopUploadingThread$UploadState
     //   154: dup
@@ -297,21 +297,21 @@ public class TroopUploadingThread
     //   162: iconst_0
     //   163: putfield 190	com/tencent/mobileqq/troop/utils/TroopUploadingThread$UploadState:jdField_a_of_type_Int	I
     //   166: aload 10
-    //   168: iload 6
+    //   168: iload 5
     //   170: putfield 150	com/tencent/mobileqq/troop/utils/TroopUploadingThread$UploadState:b	I
     //   173: aload_0
     //   174: getfield 192	com/tencent/mobileqq/troop/utils/TroopUploadingThread:jdField_a_of_type_ComTencentMobileqqTroopUtilsUploadingTask	Lcom/tencent/mobileqq/troop/utils/UploadingTask;
     //   177: aload 10
     //   179: invokevirtual 198	com/tencent/mobileqq/troop/utils/UploadingTask:notifyObservers	(Ljava/lang/Object;)V
-    //   182: iload 5
+    //   182: iload 6
     //   184: bipush 100
     //   186: imul
     //   187: iload 8
     //   189: idiv
-    //   190: istore 6
+    //   190: istore 5
     //   192: goto -149 -> 43
     //   195: iload 8
-    //   197: iload 5
+    //   197: iload 6
     //   199: isub
     //   200: istore 7
     //   202: goto -88 -> 114
@@ -354,8 +354,8 @@ public class TroopUploadingThread
     //   0	261	2	paramHttpURLConnection	HttpURLConnection
     //   0	261	3	paramUploadItem	UploadItem
     //   0	261	4	paramInt	int
-    //   41	159	5	i	int
-    //   38	153	6	j	int
+    //   38	153	5	i	int
+    //   41	159	6	j	int
     //   112	89	7	k	int
     //   35	165	8	m	int
     //   31	217	9	localDataOutputStream	java.io.DataOutputStream
@@ -766,7 +766,7 @@ public class TroopUploadingThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopUploadingThread
  * JD-Core Version:    0.7.0.1
  */

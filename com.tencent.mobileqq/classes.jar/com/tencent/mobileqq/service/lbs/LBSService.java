@@ -172,7 +172,7 @@ public class LBSService
         localObject1 = new ArrayList();
         try
         {
-          i = Integer.parseInt("3560");
+          i = Integer.parseInt("3565");
           int i3 = arrayOfInt.length;
           j = 0;
           for (;;)
@@ -198,7 +198,7 @@ public class LBSService
               }
             }
             ((SummaryCardBusiEntry.comm)localObject3).platform.set(2);
-            ((SummaryCardBusiEntry.comm)localObject3).qqver.set("7.6.3.3560");
+            ((SummaryCardBusiEntry.comm)localObject3).qqver.set("7.6.3.3565");
             ((SummaryCardBusiEntry.comm)localObject3).build.set(i);
             localObject3 = ((SummaryCardBusiEntry.comm)localObject3).toByteArray();
             int k = localObject3.length;
@@ -1047,7 +1047,7 @@ public class LBSService
     int j = 0;
     try
     {
-      i = Integer.parseInt("3560");
+      i = Integer.parseInt("3565");
       localObject5 = new ArrayList();
       if ((l2 > 0L) || (bool))
       {
@@ -1081,7 +1081,7 @@ public class LBSService
           ((SummaryCardBusiEntry.comm)localObject6).touin.set(l2);
           ((SummaryCardBusiEntry.comm)localObject6).service.set(tmp473_469[j]);
           ((SummaryCardBusiEntry.comm)localObject6).platform.set(2);
-          ((SummaryCardBusiEntry.comm)localObject6).qqver.set("7.6.3.3560");
+          ((SummaryCardBusiEntry.comm)localObject6).qqver.set("7.6.3.3565");
           ((SummaryCardBusiEntry.comm)localObject6).build.set(i);
           localObject6 = ((SummaryCardBusiEntry.comm)localObject6).toByteArray();
           int i1 = localObject6.length;

@@ -25,7 +25,7 @@ public class ItemTouchUIUtilImpl$Honeycomb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.widget.itemtouchhelper.ItemTouchUIUtilImpl.Honeycomb
  * JD-Core Version:    0.7.0.1
  */

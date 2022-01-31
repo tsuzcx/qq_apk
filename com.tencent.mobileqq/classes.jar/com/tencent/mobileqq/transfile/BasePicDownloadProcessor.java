@@ -885,7 +885,7 @@ public class BasePicDownloadProcessor
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.g == 0)
     {
       str = "&rf=aio";
-      str = "cldver=7.6.3.3560" + str;
+      str = "cldver=7.6.3.3565" + str;
       paramInt = paramString.indexOf("?");
       if (paramInt <= 0) {
         break label219;
@@ -1820,7 +1820,7 @@ public class BasePicDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BasePicDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

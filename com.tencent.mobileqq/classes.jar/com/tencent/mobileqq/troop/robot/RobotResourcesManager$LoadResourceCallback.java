@@ -6,7 +6,7 @@ public abstract interface RobotResourcesManager$LoadResourceCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.troop.robot.RobotResourcesManager.LoadResourceCallback
  * JD-Core Version:    0.7.0.1
  */

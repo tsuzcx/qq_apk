@@ -71,7 +71,7 @@ public class GestureMgrAppDownload
   {
     try
     {
-      i = Integer.valueOf("349884").intValue();
+      i = Integer.valueOf("351230").intValue();
       BaseApplicationImpl.sApplication.getSharedPreferences("so_sp", 4).edit().putInt("key_so_version_" + paramString, i);
       return;
     }

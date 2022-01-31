@@ -209,28 +209,21 @@ public class RecentUserCache
   
   public RecentUser a(String paramString, int paramInt)
   {
-    if ((paramInt < 0) || (paramString == null) || (paramString.length() <= 2))
+    if ((paramInt >= 0) && (paramString != null) && (paramString.length() <= 2)) {}
+    RecentUser localRecentUser = (RecentUser)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(a(paramString, paramInt));
+    if (localRecentUser == null)
     {
-      if (paramInt != 1006) {
-        QLog.w("Q.db.Cache.RecentUserCache", 1, "findRecentUserByUin, uin is invalid, uin[" + paramString + "], type[" + paramInt + "]");
-      }
-      paramString = null;
+      localRecentUser = new RecentUser();
+      localRecentUser.uin = paramString;
+      localRecentUser.type = paramInt;
+      localRecentUser.displayName = localRecentUser.uin;
+      localRecentUser.parse();
+      a(localRecentUser);
+      paramString = localRecentUser;
     }
-    RecentUser localRecentUser;
     do
     {
       return paramString;
-      localRecentUser = (RecentUser)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(a(paramString, paramInt));
-      if (localRecentUser == null)
-      {
-        localRecentUser = new RecentUser();
-        localRecentUser.uin = paramString;
-        localRecentUser.type = paramInt;
-        localRecentUser.displayName = localRecentUser.uin;
-        localRecentUser.parse();
-        a(localRecentUser);
-        return localRecentUser;
-      }
       paramString = localRecentUser;
     } while (localRecentUser.msg != null);
     if (localRecentUser.mIsParsed)

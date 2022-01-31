@@ -1,5 +1,5 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: qq_7.6.3_1.apk
+apkFileName: qq_7.6.3_2.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
@@ -230,5 +230,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '850'
+  versionCode: '852'
   versionName: 7.6.3

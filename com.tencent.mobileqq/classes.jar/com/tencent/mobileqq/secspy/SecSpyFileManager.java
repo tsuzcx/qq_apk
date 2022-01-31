@@ -791,9 +791,9 @@ public class SecSpyFileManager
     //   6: iconst_0
     //   7: istore_3
     //   8: iconst_0
-    //   9: istore 4
+    //   9: istore 5
     //   11: iconst_0
-    //   12: istore 5
+    //   12: istore 4
     //   14: new 258	java/io/FileInputStream
     //   17: dup
     //   18: aload_1
@@ -822,7 +822,7 @@ public class SecSpyFileManager
     //   69: ifnull +8 -> 77
     //   72: aload 6
     //   74: invokevirtual 273	java/io/FileInputStream:close	()V
-    //   77: iload 5
+    //   77: iload 4
     //   79: istore_3
     //   80: iconst_0
     //   81: ifeq +11 -> 92
@@ -880,7 +880,7 @@ public class SecSpyFileManager
     //   187: iload 4
     //   189: ireturn
     //   190: astore_1
-    //   191: iload 5
+    //   191: iload 4
     //   193: istore_3
     //   194: invokestatic 338	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   197: ifeq -105 -> 92
@@ -899,12 +899,12 @@ public class SecSpyFileManager
     //   221: invokespecial 562	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   224: invokespecial 565	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   227: astore_1
-    //   228: iload 4
+    //   228: iload 5
     //   230: istore_3
     //   231: sipush 10240
     //   234: newarray byte
     //   236: astore 7
-    //   238: iload 4
+    //   238: iload 5
     //   240: istore_3
     //   241: aload 6
     //   243: aload 7
@@ -915,7 +915,7 @@ public class SecSpyFileManager
     //   253: iload_2
     //   254: iconst_m1
     //   255: if_icmpeq +17 -> 272
-    //   258: iload 4
+    //   258: iload 5
     //   260: istore_3
     //   261: aload_1
     //   262: aload 7
@@ -1017,8 +1017,8 @@ public class SecSpyFileManager
     //   0	440	1	paramFile	File
     //   252	14	2	i	int
     //   7	422	3	bool1	boolean
-    //   9	421	4	bool2	boolean
-    //   12	180	5	bool3	boolean
+    //   12	418	4	bool2	boolean
+    //   9	250	5	bool3	boolean
     //   22	314	6	localObject1	Object
     //   352	46	6	localException	Exception
     //   403	30	6	localObject2	Object
@@ -1529,7 +1529,7 @@ public class SecSpyFileManager
     //   976: aload 4
     //   978: ldc_w 625
     //   981: invokevirtual 298	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   984: ifeq +1106 -> 2090
+    //   984: ifeq +1102 -> 2086
     //   987: aload 4
     //   989: iconst_0
     //   990: aload 4
@@ -1655,16 +1655,16 @@ public class SecSpyFileManager
     //   1292: astore 12
     //   1294: aload 12
     //   1296: invokevirtual 674	java/io/FileInputStream:available	()I
-    //   1299: istore 7
-    //   1301: iload 7
+    //   1299: istore 6
+    //   1301: iload 6
     //   1303: ldc_w 675
     //   1306: invokestatic 681	java/lang/Math:min	(II)I
-    //   1309: istore 6
-    //   1311: iload 6
+    //   1309: istore 7
+    //   1311: iload 7
     //   1313: newarray byte
     //   1315: astore 13
     //   1317: aload 18
-    //   1319: iload 7
+    //   1319: iload 6
     //   1321: i2f
     //   1322: invokestatic 684	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;F)F
     //   1325: pop
@@ -1683,20 +1683,20 @@ public class SecSpyFileManager
     //   1351: aload 12
     //   1353: aload 13
     //   1355: iconst_0
-    //   1356: iload 6
+    //   1356: iload 7
     //   1358: invokevirtual 265	java/io/FileInputStream:read	([BII)I
-    //   1361: istore 7
-    //   1363: iload 7
+    //   1361: istore 6
+    //   1363: iload 6
     //   1365: ifle +56 -> 1421
     //   1368: aload 11
     //   1370: aload 13
     //   1372: iconst_0
-    //   1373: iload 6
+    //   1373: iload 7
     //   1375: invokevirtual 699	java/io/DataOutputStream:write	([BII)V
     //   1378: aload 18
     //   1380: aload 18
     //   1382: invokestatic 702	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;)F
-    //   1385: iload 7
+    //   1385: iload 6
     //   1387: i2f
     //   1388: fadd
     //   1389: invokestatic 704	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:b	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;F)F
@@ -1705,13 +1705,13 @@ public class SecSpyFileManager
     //   1395: invokevirtual 674	java/io/FileInputStream:available	()I
     //   1398: ldc_w 675
     //   1401: invokestatic 681	java/lang/Math:min	(II)I
-    //   1404: istore 6
+    //   1404: istore 7
     //   1406: aload 12
     //   1408: aload 13
     //   1410: iconst_0
-    //   1411: iload 6
+    //   1411: iload 7
     //   1413: invokevirtual 265	java/io/FileInputStream:read	([BII)I
-    //   1416: istore 7
+    //   1416: istore 6
     //   1418: goto -55 -> 1363
     //   1421: aload 11
     //   1423: ldc_w 664
@@ -1761,7 +1761,7 @@ public class SecSpyFileManager
     //   1537: invokevirtual 273	java/io/FileInputStream:close	()V
     //   1540: iload 6
     //   1542: sipush 200
-    //   1545: if_icmpne +539 -> 2084
+    //   1545: if_icmpne +535 -> 2080
     //   1548: iconst_1
     //   1549: istore 10
     //   1551: aload 11
@@ -1971,92 +1971,90 @@ public class SecSpyFileManager
     //   1975: aload 14
     //   1977: astore 13
     //   1979: goto -150 -> 1829
-    //   1982: astore 13
-    //   1984: aload 11
-    //   1986: astore 14
-    //   1988: aload 4
-    //   1990: astore 11
-    //   1992: aload 13
-    //   1994: astore 4
-    //   1996: aload 12
-    //   1998: astore 13
-    //   2000: aload 14
-    //   2002: astore 12
-    //   2004: goto -175 -> 1829
-    //   2007: astore 15
-    //   2009: aload 12
-    //   2011: astore 13
-    //   2013: aload 11
-    //   2015: astore 12
-    //   2017: aload 4
-    //   2019: astore 14
-    //   2021: aload 15
-    //   2023: astore 4
-    //   2025: aload 13
-    //   2027: astore 11
-    //   2029: aload 14
-    //   2031: astore 13
-    //   2033: goto -204 -> 1829
-    //   2036: astore 13
-    //   2038: aconst_null
-    //   2039: astore 14
-    //   2041: aconst_null
-    //   2042: astore 11
-    //   2044: aload 4
-    //   2046: astore 12
-    //   2048: aload 14
-    //   2050: astore 4
-    //   2052: goto -377 -> 1675
-    //   2055: astore 13
-    //   2057: aload 4
-    //   2059: astore 12
-    //   2061: aconst_null
-    //   2062: astore 4
-    //   2064: goto -389 -> 1675
-    //   2067: astore 13
-    //   2069: aload 4
-    //   2071: astore 14
-    //   2073: aload 12
-    //   2075: astore 4
-    //   2077: aload 14
-    //   2079: astore 12
-    //   2081: goto -406 -> 1675
-    //   2084: iconst_0
-    //   2085: istore 10
-    //   2087: goto -536 -> 1551
-    //   2090: goto -1088 -> 1002
+    //   1982: astore 14
+    //   1984: aload 12
+    //   1986: astore 13
+    //   1988: aload 11
+    //   1990: astore 12
+    //   1992: aload 4
+    //   1994: astore 11
+    //   1996: aload 14
+    //   1998: astore 4
+    //   2000: goto -171 -> 1829
+    //   2003: astore 15
+    //   2005: aload 12
+    //   2007: astore 13
+    //   2009: aload 11
+    //   2011: astore 12
+    //   2013: aload 4
+    //   2015: astore 14
+    //   2017: aload 15
+    //   2019: astore 4
+    //   2021: aload 13
+    //   2023: astore 11
+    //   2025: aload 14
+    //   2027: astore 13
+    //   2029: goto -200 -> 1829
+    //   2032: astore 13
+    //   2034: aconst_null
+    //   2035: astore 14
+    //   2037: aconst_null
+    //   2038: astore 11
+    //   2040: aload 4
+    //   2042: astore 12
+    //   2044: aload 14
+    //   2046: astore 4
+    //   2048: goto -373 -> 1675
+    //   2051: astore 13
+    //   2053: aload 4
+    //   2055: astore 12
+    //   2057: aconst_null
+    //   2058: astore 4
+    //   2060: goto -385 -> 1675
+    //   2063: astore 13
+    //   2065: aload 4
+    //   2067: astore 14
+    //   2069: aload 12
+    //   2071: astore 4
+    //   2073: aload 14
+    //   2075: astore 12
+    //   2077: goto -402 -> 1675
+    //   2080: iconst_0
+    //   2081: istore 10
+    //   2083: goto -532 -> 1551
+    //   2086: goto -1084 -> 1002
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	2093	0	this	SecSpyFileManager
-    //   0	2093	1	paramString1	String
-    //   0	2093	2	paramLong	long
-    //   0	2093	4	paramString2	String
-    //   0	2093	5	paramBoolean	boolean
-    //   1309	237	6	i	int
-    //   1299	118	7	j	int
+    //   0	2089	0	this	SecSpyFileManager
+    //   0	2089	1	paramString1	String
+    //   0	2089	2	paramLong	long
+    //   0	2089	4	paramString2	String
+    //   0	2089	5	paramBoolean	boolean
+    //   1299	247	6	i	int
+    //   1309	103	7	j	int
     //   229	184	8	l	long
-    //   1549	537	10	bool	boolean
-    //   10	2033	11	localObject1	Object
+    //   1549	533	10	bool	boolean
+    //   10	2029	11	localObject1	Object
     //   437	1398	12	localObject2	Object
     //   1940	7	12	localObject3	Object
-    //   1956	124	12	localObject4	Object
+    //   1956	120	12	localObject4	Object
     //   433	1082	13	localObject5	Object
     //   1664	38	13	localException1	Exception
     //   1827	126	13	localObject6	Object
     //   1961	11	13	localObject7	Object
-    //   1977	1	13	localObject8	Object
-    //   1982	11	13	localObject9	Object
-    //   1998	34	13	localObject10	Object
-    //   2036	1	13	localException2	Exception
-    //   2055	1	13	localException3	Exception
-    //   2067	1	13	localException4	Exception
-    //   16	2062	14	localObject11	Object
-    //   13	1942	15	localObject12	Object
-    //   2007	15	15	localObject13	Object
-    //   33	920	16	localObject14	Object
-    //   429	489	17	localObject15	Object
+    //   1977	51	13	localObject8	Object
+    //   2032	1	13	localException2	Exception
+    //   2051	1	13	localException3	Exception
+    //   2063	1	13	localException4	Exception
+    //   16	1960	14	localObject9	Object
+    //   1982	15	14	localObject10	Object
+    //   2015	59	14	str1	String
+    //   13	1942	15	localObject11	Object
+    //   2003	15	15	localObject12	Object
+    //   33	920	16	localObject13	Object
+    //   429	489	17	localObject14	Object
     //   26	1881	18	localUploadProgressInfo	SecSpyFileManager.UploadProgressInfo
-    //   927	28	19	str	String
+    //   927	28	19	str2	String
     // Exception table:
     //   from	to	target	type
     //   108	116	196	java/lang/Exception
@@ -2137,14 +2135,14 @@ public class SecSpyFileManager
     //   1368	1418	1982	finally
     //   1421	1525	1982	finally
     //   1525	1540	1982	finally
-    //   1675	1692	2007	finally
-    //   1692	1710	2007	finally
-    //   1052	1204	2036	java/lang/Exception
-    //   1204	1294	2055	java/lang/Exception
-    //   1294	1363	2067	java/lang/Exception
-    //   1368	1418	2067	java/lang/Exception
-    //   1421	1525	2067	java/lang/Exception
-    //   1525	1540	2067	java/lang/Exception
+    //   1675	1692	2003	finally
+    //   1692	1710	2003	finally
+    //   1052	1204	2032	java/lang/Exception
+    //   1204	1294	2051	java/lang/Exception
+    //   1294	1363	2063	java/lang/Exception
+    //   1368	1418	2063	java/lang/Exception
+    //   1421	1525	2063	java/lang/Exception
+    //   1525	1540	2063	java/lang/Exception
   }
   
   public void b(List paramList, long paramLong, String paramString)
@@ -2158,7 +2156,7 @@ public class SecSpyFileManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.secspy.SecSpyFileManager
  * JD-Core Version:    0.7.0.1
  */

@@ -59,7 +59,7 @@ public class ChatBackgroundAuthHandler
     Object localObject = this.a.getCurrentAccountUin();
     chatbgInfo.Platform_Comm_Req localPlatform_Comm_Req = new chatbgInfo.Platform_Comm_Req();
     localPlatform_Comm_Req.ImPlat.set(109L);
-    localPlatform_Comm_Req.mqqver.set("7.6.3.3560");
+    localPlatform_Comm_Req.mqqver.set("7.6.3.3565");
     localPlatform_Comm_Req.osver.set(Build.VERSION.RELEASE);
     chatbgInfo.Bg_CheckAuth_Req localBg_CheckAuth_Req = new chatbgInfo.Bg_CheckAuth_Req();
     if ((paramList != null) && (paramList.size() > 0)) {

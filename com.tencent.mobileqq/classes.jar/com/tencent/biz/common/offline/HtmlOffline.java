@@ -732,9 +732,9 @@ public class HtmlOffline
     localReqBody.uint32_cmd.set(3);
     localReqBody.uint32_platform.set(3);
     if ((paramHashMap != null) && (paramHashMap.size() > 0)) {
-      QLog.d("HtmlCheckUpdate", 1, String.format("check update, QQ Version: %s", new Object[] { "7.6.3.3560" }));
+      QLog.d("HtmlCheckUpdate", 1, String.format("check update, QQ Version: %s", new Object[] { "7.6.3.3565" }));
     }
-    localReqBody.str_qver.set(ByteStringMicro.copyFrom("7.6.3.3560".getBytes()));
+    localReqBody.str_qver.set(ByteStringMicro.copyFrom("7.6.3.3565".getBytes()));
     localReqBody.str_osrelease.set(ByteStringMicro.copyFrom(Build.VERSION.RELEASE.getBytes()));
     i = NetworkUtil.a(paramAppRuntime.getApplication());
     localReqBody.int32_network.set(i);

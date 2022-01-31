@@ -74,11 +74,11 @@ public class FMSettings
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 7
+    //   1: astore 9
     //   3: aconst_null
-    //   4: astore 8
+    //   4: astore 7
     //   6: aconst_null
-    //   7: astore 9
+    //   7: astore 8
     //   9: aload_1
     //   10: invokevirtual 99	java/io/File:exists	()Z
     //   13: ifeq +12 -> 25
@@ -194,7 +194,7 @@ public class FMSettings
     //   249: astore_1
     //   250: aconst_null
     //   251: astore 5
-    //   253: aload 7
+    //   253: aload 9
     //   255: astore_1
     //   256: aload 5
     //   258: ifnull +8 -> 266
@@ -211,7 +211,7 @@ public class FMSettings
     //   282: astore_1
     //   283: aconst_null
     //   284: astore 5
-    //   286: aload 8
+    //   286: aload 7
     //   288: astore_1
     //   289: aload 5
     //   291: ifnull +8 -> 299
@@ -279,7 +279,7 @@ public class FMSettings
     //   428: astore 7
     //   430: goto -107 -> 323
     //   433: astore_1
-    //   434: aload 8
+    //   434: aload 7
     //   436: astore_1
     //   437: goto -148 -> 289
     //   440: astore_1
@@ -287,7 +287,7 @@ public class FMSettings
     //   443: astore_1
     //   444: goto -155 -> 289
     //   447: astore_1
-    //   448: aload 7
+    //   448: aload 9
     //   450: astore_1
     //   451: goto -195 -> 256
     //   454: astore_1
@@ -297,13 +297,13 @@ public class FMSettings
     //   461: astore_1
     //   462: aconst_null
     //   463: astore_1
-    //   464: aload 9
+    //   464: aload 8
     //   466: astore_2
     //   467: goto -291 -> 176
     //   470: astore_1
     //   471: aload 5
     //   473: astore_1
-    //   474: aload 9
+    //   474: aload 8
     //   476: astore_2
     //   477: goto -301 -> 176
     // Local variable table:
@@ -321,12 +321,12 @@ public class FMSettings
     //   410	1	5	localException5	Exception
     //   415	57	5	localException6	Exception
     //   106	350	6	localFileInputStream	java.io.FileInputStream
-    //   1	253	7	arrayOfByte	byte[]
+    //   4	283	7	arrayOfByte	byte[]
     //   315	49	7	localObject1	Object
     //   420	1	7	localObject2	Object
-    //   428	21	7	localObject3	Object
-    //   4	431	8	localObject4	Object
-    //   7	468	9	localObject5	Object
+    //   428	7	7	localObject3	Object
+    //   7	468	8	localObject4	Object
+    //   1	448	9	localObject5	Object
     // Exception table:
     //   from	to	target	type
     //   108	119	169	java/io/IOException

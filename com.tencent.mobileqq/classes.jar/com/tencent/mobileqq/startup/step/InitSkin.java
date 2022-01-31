@@ -164,7 +164,7 @@ public class InitSkin
         i = localObjectInputStream.readInt();
         str = localObjectInputStream.readUTF();
         localObjectInputStream.close();
-        if ((i != AppSetting.jdField_a_of_type_Int) || (!"349884".equals(str))) {
+        if ((i != AppSetting.jdField_a_of_type_Int) || (!"351230".equals(str))) {
           continue;
         }
         if (QLog.isColorLevel()) {
@@ -333,7 +333,7 @@ public class InitSkin
         i = localObjectInputStream.readInt();
         str = localObjectInputStream.readUTF();
         localObjectInputStream.close();
-        if ((i != AppSetting.jdField_a_of_type_Int) || (!"349884".equals(str))) {
+        if ((i != AppSetting.jdField_a_of_type_Int) || (!"351230".equals(str))) {
           continue;
         }
         if (QLog.isColorLevel()) {
@@ -448,7 +448,7 @@ public class InitSkin
         i = localObjectInputStream.readInt();
         str = localObjectInputStream.readUTF();
         localObjectInputStream.close();
-        if ((i != AppSetting.jdField_a_of_type_Int) || (!"349884".equals(str))) {
+        if ((i != AppSetting.jdField_a_of_type_Int) || (!"351230".equals(str))) {
           continue;
         }
         if (QLog.isColorLevel()) {
@@ -559,7 +559,7 @@ public class InitSkin
           }
         }
         i = a(paramContext);
-        str = "/skin/skin_cache_mobileqq_" + AppSetting.jdField_a_of_type_Int + "_" + "349884" + "_" + i;
+        str = "/skin/skin_cache_mobileqq_" + AppSetting.jdField_a_of_type_Int + "_" + "351230" + "_" + i;
         localObject2 = new File(localFile, "/skin/config");
         localFile = new File(localFile, str);
         try
@@ -671,7 +671,7 @@ public class InitSkin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitSkin
  * JD-Core Version:    0.7.0.1
  */

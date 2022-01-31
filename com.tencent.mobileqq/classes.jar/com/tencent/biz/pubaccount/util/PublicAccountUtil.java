@@ -262,7 +262,7 @@ public class PublicAccountUtil
   
   public static String a()
   {
-    return "7.6.3,3,3560";
+    return "7.6.3,3,3565";
   }
   
   public static String a(BaseArticleInfo paramBaseArticleInfo)
@@ -1567,7 +1567,7 @@ public class PublicAccountUtil
     NewIntent localNewIntent = new NewIntent(paramContext, PublicAccountServlet.class);
     localNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("7.6.3,3,3560");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("7.6.3,3,3565");
     localGetPublicAccountDetailInfoRequest.seqno.set(0);
     localGetPublicAccountDetailInfoRequest.version.set(1);
     try

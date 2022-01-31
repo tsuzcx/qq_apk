@@ -1919,7 +1919,7 @@ public class WebViewFragment
   public int f(Bundle paramBundle)
   {
     Util.a("Web_qqbrowser_state_machine_init_data");
-    QbSdk.setQQBuildNumber("3560");
+    QbSdk.setQQBuildNumber("3565");
     paramBundle = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("options");
     if (paramBundle != null) {}
     try
@@ -2789,7 +2789,7 @@ public class WebViewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewFragment
  * JD-Core Version:    0.7.0.1
  */

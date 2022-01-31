@@ -355,7 +355,7 @@ public class QzoneLiveVideoInterface
   
   public static String getBuildNumber()
   {
-    return "3560";
+    return "3565";
   }
   
   public static String getBuilderNumber()

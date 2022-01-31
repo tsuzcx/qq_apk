@@ -1102,7 +1102,7 @@ public class ShortVideoDownloadProcessor
       localStringBuilder.append(localServerAddr.jdField_a_of_type_Int);
     }
     localStringBuilder.append("/qqdownload?ver=");
-    localStringBuilder.append("3560");
+    localStringBuilder.append("3565");
     localStringBuilder.append("&rkey=");
     localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
     localStringBuilder.append("&filetype=");
@@ -1327,7 +1327,7 @@ public class ShortVideoDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

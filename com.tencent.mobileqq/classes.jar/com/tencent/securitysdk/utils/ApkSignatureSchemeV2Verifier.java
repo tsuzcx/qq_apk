@@ -206,7 +206,7 @@ public class ApkSignatureSchemeV2Verifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.securitysdk.utils.ApkSignatureSchemeV2Verifier
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public abstract interface PhoneContactManager$IPhoneContactListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener
  * JD-Core Version:    0.7.0.1
  */

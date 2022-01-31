@@ -26,7 +26,6 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.lovelanguage.LoveLanguageConfig;
 import com.tencent.mobileqq.mtt.MttBrowerWrapper;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
@@ -288,135 +287,115 @@ public class QQText
     paramInt1 = i;
     int i7;
     boolean bool1;
+    label82:
+    int m;
     if (k < paramInt2)
     {
       i7 = paramStringBuilder.codePointAt(k);
       if ((paramInt3 & 0x4) == 4)
       {
         bool1 = true;
-        label82:
-        if ((i7 != 17) || (k >= i5 - 1)) {
-          break label229;
+        if ((i7 == 17) && (((paramInt3 & 0x6) <= 0) || (i7 != 20) || (k >= i5 - 1))) {
+          break label633;
         }
-        i = paramStringBuilder.charAt(k + 1);
-        if (i >= LoveLanguageConfig.jdField_a_of_type_ArrayOfInt.length + 30) {
-          break label1253;
+        m = paramStringBuilder.charAt(k + 1);
+        if (m >= EmotcationConstants.jdField_a_of_type_Int) {
+          break label263;
         }
         if (!jdField_a_of_type_Boolean) {
-          break label207;
+          break label234;
         }
         paramStringBuilder.replace(k, k + 2, "##");
-        label142:
-        a(new QQText.EmoticonSpan(this, i, paramInt4, 3), k, k + 4, 33);
-        i = k + 3;
+        label152:
+        if (!bool1) {
+          break label256;
+        }
+        i = 0x80000000 | m;
+        label165:
+        a(new QQText.EmoticonSpan(this, i, paramInt4, 1), k, k + 2, 33);
+        i = k + 1;
         k = j + 1;
+        paramInt1 += 1;
         j = i;
         i = k;
-        label187:
+        label214:
         if (i <= 512) {
-          break label1237;
+          break label1118;
         }
       }
     }
-    label207:
-    label229:
-    label1253:
+    label234:
+    label1131:
     for (;;)
     {
       if (paramInt1 > 0) {}
       return paramInt1;
       bool1 = false;
       break label82;
-      if (i != 10) {
-        break label142;
+      if (m != 10) {
+        break label152;
       }
       paramStringBuilder.setCharAt(k + 1, 'ú');
-      break label142;
-      int m;
-      if (((paramInt3 & 0x6) > 0) && (i7 == 20) && (k < i5 - 1))
+      break label152;
+      i = m;
+      break label165;
+      if ((m >= 255) && (k + 4 < i5))
       {
-        m = paramStringBuilder.charAt(k + 1);
-        if (m < EmotcationConstants.jdField_a_of_type_Int)
+        char[] arrayOfChar = new char[4];
+        arrayOfChar[0] = paramStringBuilder.charAt(k + 4);
+        arrayOfChar[1] = paramStringBuilder.charAt(k + 3);
+        arrayOfChar[2] = paramStringBuilder.charAt(k + 2);
+        arrayOfChar[3] = paramStringBuilder.charAt(k + 1);
+        i = 0;
+        if (i < 3)
         {
-          if (jdField_a_of_type_Boolean)
-          {
-            paramStringBuilder.replace(k, k + 2, "##");
-            if (!bool1) {
-              break label375;
-            }
-          }
-          label375:
-          for (i = 0x80000000 | m;; i = m)
-          {
-            a(new QQText.EmoticonSpan(this, i, paramInt4, 1), k, k + 2, 33);
-            k += 1;
-            i = j + 1;
-            paramInt1 += 1;
-            j = k;
-            break;
-            if (m != 10) {
-              break label292;
-            }
-            paramStringBuilder.setCharAt(k + 1, 'ú');
-            break label292;
-          }
-        }
-        if ((m >= 255) && (k + 4 < i5))
-        {
-          char[] arrayOfChar = new char[4];
-          arrayOfChar[0] = paramStringBuilder.charAt(k + 4);
-          arrayOfChar[1] = paramStringBuilder.charAt(k + 3);
-          arrayOfChar[2] = paramStringBuilder.charAt(k + 2);
-          arrayOfChar[3] = paramStringBuilder.charAt(k + 1);
-          i = 0;
-          if (i < 3)
-          {
-            if (arrayOfChar[i] == 'ú') {
-              arrayOfChar[i] = '\n';
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              if (arrayOfChar[i] == 'þ') {
-                arrayOfChar[i] = '\r';
-              }
-            }
-          }
-          boolean bool2;
-          if (m == 511)
-          {
-            bool2 = true;
-            a(new QQText.SmallEmojiSpan(this, arrayOfChar, paramInt4, bool1, bool2), k, k + 5, 33);
-            i = 2;
-            if (i >= 5) {
-              break label635;
-            }
-            if (paramStringBuilder.charAt(k + i) != '\n') {
-              break label604;
-            }
-            paramStringBuilder.setCharAt(k + i, 'ú');
+          if (arrayOfChar[i] == 'ú') {
+            arrayOfChar[i] = '\n';
           }
           for (;;)
           {
             i += 1;
-            break label555;
-            bool2 = false;
             break;
-            if (paramStringBuilder.charAt(k + i) == '\r') {
-              paramStringBuilder.setCharAt(k + i, 'þ');
+            if (arrayOfChar[i] == 'þ') {
+              arrayOfChar[i] = '\r';
             }
           }
-          label635:
-          k += 4;
-          i = j + 1;
-          paramInt1 += 1;
-          j = k;
-          break label187;
         }
-        if (m != 250) {
-          break label1253;
+        boolean bool2;
+        if (m == 511)
+        {
+          bool2 = true;
+          a(new QQText.SmallEmojiSpan(this, arrayOfChar, paramInt4, bool1, bool2), k, k + 5, 33);
+          i = 2;
+          if (i >= 5) {
+            break label516;
+          }
+          if (paramStringBuilder.charAt(k + i) != '\n') {
+            break label485;
+          }
+          paramStringBuilder.setCharAt(k + i, 'ú');
         }
+        for (;;)
+        {
+          i += 1;
+          break label436;
+          bool2 = false;
+          break;
+          if (paramStringBuilder.charAt(k + i) == '\r') {
+            paramStringBuilder.setCharAt(k + i, 'þ');
+          }
+        }
+        k += 4;
+        i = j + 1;
+        paramInt1 += 1;
+        j = k;
+        break label214;
+      }
+      label633:
+      int i3;
+      int n;
+      if (m == 250)
+      {
         if (jdField_a_of_type_Boolean) {
           paramStringBuilder.replace(k, k + 2, "##");
         }
@@ -430,37 +409,35 @@ public class QQText
           j = k;
           break;
         }
-      }
-      int i3;
-      int n;
-      if ((paramInt3 & 0x1) == 1)
-      {
-        m = EmotcationConstants.a(i7);
-        i = -1;
-        i1 = 0;
-        i3 = 0;
-        if (i7 > 65535)
+        if ((paramInt3 & 0x1) == 1)
         {
-          n = i3;
-          if (i5 > k + 2)
+          m = EmotcationConstants.a(i7);
+          i = -1;
+          i1 = 0;
+          i3 = 0;
+          if (i7 > 65535)
           {
-            i = paramStringBuilder.codePointAt(k + 2);
             n = i3;
-          }
-          if (EmotcationConstants.a(i)) {
-            i1 = 1;
-          }
-          if ((m != -1) && (i1 == 0)) {
-            break label1264;
-          }
-          i1 = EmotcationConstants.a(i7, i);
-          if (i1 != -1) {
-            break label1093;
+            if (i5 > k + 2)
+            {
+              i = paramStringBuilder.codePointAt(k + 2);
+              n = i3;
+            }
+            if (EmotcationConstants.a(i)) {
+              i1 = 1;
+            }
+            if ((m != -1) && (i1 == 0)) {
+              break label1145;
+            }
+            i1 = EmotcationConstants.a(i7, i);
+            if (i1 != -1) {
+              break label974;
+            }
           }
         }
       }
-      label1127:
-      label1264:
+      label1008:
+      label1145:
       for (int i1 = 1;; i1 = 0)
       {
         if (m != -1)
@@ -473,14 +450,14 @@ public class QQText
               }
               i1 = 2;
               if ((i <= 65535) || (i5 < k + 2)) {
-                break label1127;
+                break label1008;
               }
               if (jdField_a_of_type_Boolean) {
                 paramStringBuilder.replace(k + 2, k + 4, "##");
               }
               i = i1 + 2;
               if (n == 0) {
-                break label1250;
+                break label1131;
               }
               i += 1;
             }
@@ -497,47 +474,47 @@ public class QQText
               break;
               n = i3;
               if (i5 <= k + 1) {
-                break label811;
+                break label692;
               }
               int i4 = paramStringBuilder.codePointAt(k + 1);
               n = i3;
               i = i4;
               if (i4 != 65039) {
-                break label811;
+                break label692;
               }
               n = i3;
               i = i4;
               if (i5 <= k + 2) {
-                break label811;
+                break label692;
               }
               i = paramStringBuilder.codePointAt(k + 2);
               n = 1;
-              break label811;
+              break label692;
               m = i1;
-              break label848;
+              break label729;
               if (jdField_a_of_type_Boolean) {
                 paramStringBuilder.replace(k, k + 1, "#");
               }
               i1 = 1;
-              break label903;
+              break label784;
               if (jdField_a_of_type_Boolean) {
                 paramStringBuilder.replace(k + 2, k + 3, "#");
               }
               i = i1 + 1;
-              break label949;
+              break label830;
               if ((i7 > 65535) && (i5 >= k + 2))
               {
                 if (jdField_a_of_type_Boolean) {
                   paramStringBuilder.replace(k, k + 2, "##");
                 }
                 i = 2;
-                break label960;
+                break label841;
               }
               if (jdField_a_of_type_Boolean) {
                 paramStringBuilder.replace(k, k + 1, "#");
               }
               i = 1;
-              break label960;
+              break label841;
             }
             k = j + 1;
             j = i;
@@ -546,7 +523,7 @@ public class QQText
         }
         i = j;
         j = k;
-        break label187;
+        break label214;
       }
     }
   }
@@ -1300,7 +1277,7 @@ public class QQText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.text.QQText
  * JD-Core Version:    0.7.0.1
  */

@@ -1064,7 +1064,7 @@ public class LoginInfoActivity
           ((StringBuilder)localObject2).append((String)localObject1);
           ((StringBuilder)localObject2).append("&plat=1");
           ((StringBuilder)localObject2).append("&app=1");
-          ((StringBuilder)localObject2).append("&version=7.6.3.3560");
+          ((StringBuilder)localObject2).append("&version=7.6.3.3565");
           ((StringBuilder)localObject2).append("&device=" + URLEncoder.encode(Build.DEVICE));
           ((StringBuilder)localObject2).append("&system=" + Build.VERSION.RELEASE);
           ((StringBuilder)localObject2).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));

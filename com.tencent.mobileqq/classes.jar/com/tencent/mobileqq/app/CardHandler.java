@@ -15267,7 +15267,7 @@ public class CardHandler
       QLog.d("CardHandler", 2, "func getShoppingCardInfo begins, seqNo:" + paramInt + ",shoppingUin:" + paramString1 + ",uin:" + paramString2);
     }
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("7.6.3,3,3560");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("7.6.3,3,3565");
     localGetPublicAccountDetailInfoRequest.version.set(1);
     localGetPublicAccountDetailInfoRequest.seqno.set(paramInt);
     try

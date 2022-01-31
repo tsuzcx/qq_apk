@@ -717,7 +717,7 @@ public class InnerDns
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.dns.InnerDns
  * JD-Core Version:    0.7.0.1
  */

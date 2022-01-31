@@ -213,7 +213,7 @@ public class CmGameSSoHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3.3560");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3.3565");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new qqavopensdkSsoTunnel.STAudioVideoReq();
@@ -251,7 +251,7 @@ public class CmGameSSoHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3.3560");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3.3565");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new qqavopensdkSsoTunnel.STAVCtrlParamReq();
@@ -370,7 +370,7 @@ public class CmGameSSoHandler
       WebSSOAgent.UniSsoServerReqComm localUniSsoServerReqComm = new WebSSOAgent.UniSsoServerReqComm();
       localUniSsoServerReqComm.platform.set(109L);
       localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
-      localUniSsoServerReqComm.mqqver.set("7.6.3.3560");
+      localUniSsoServerReqComm.mqqver.set("7.6.3.3565");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
       localUniSsoServerReq.reqdata.set(paramString2);
@@ -398,7 +398,7 @@ public class CmGameSSoHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3.3560");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3.3565");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localUniSsoServerReq.reqdata.set(paramString2);
@@ -430,7 +430,7 @@ public class CmGameSSoHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3.3560");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3.3565");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new GetTinyID.STTinyID2UserAccInfoReq();

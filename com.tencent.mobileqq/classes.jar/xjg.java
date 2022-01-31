@@ -33,7 +33,7 @@ public class xjg
     ((StringBuilder)localObject).append(str);
     ((StringBuilder)localObject).append("&plat=1");
     ((StringBuilder)localObject).append("&app=1");
-    ((StringBuilder)localObject).append("&version=7.6.3.3560");
+    ((StringBuilder)localObject).append("&version=7.6.3.3565");
     ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
     ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
     ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));

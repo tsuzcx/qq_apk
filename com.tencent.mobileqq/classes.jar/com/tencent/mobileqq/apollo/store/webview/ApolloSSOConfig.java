@@ -332,7 +332,7 @@ public class ApolloSSOConfig
     }
     localReqBody.int_protocolver.set(1);
     localReqBody.uint_clientplatid.set(109);
-    localReqBody.str_clientver.set("7.6.3.3560");
+    localReqBody.str_clientver.set("7.6.3.3565");
     localReqBody.uint_uin.set(Long.parseLong((String)localObject2));
     int i = ((SharedPreferences)localObject1).getInt("sp_key_apollo_webView_config_version", 0);
     localObject2 = new ClubContentUpdateInfoPb.ReqItemInfo();

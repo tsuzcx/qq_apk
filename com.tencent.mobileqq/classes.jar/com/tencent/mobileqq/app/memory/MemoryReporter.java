@@ -156,7 +156,7 @@ public class MemoryReporter
   
   private void d()
   {
-    if (("0".equals("349884")) || (!this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_need_report", false))) {
+    if (("0".equals("351230")) || (!this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_need_report", false))) {
       return;
     }
     SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();

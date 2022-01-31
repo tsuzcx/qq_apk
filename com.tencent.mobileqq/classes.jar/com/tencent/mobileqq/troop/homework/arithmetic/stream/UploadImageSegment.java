@@ -47,11 +47,11 @@ public class UploadImageSegment
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
+    //   1: astore 5
     //   3: aconst_null
     //   4: astore 6
     //   6: aconst_null
-    //   7: astore 5
+    //   7: astore 4
     //   9: aload 6
     //   11: astore_3
     //   12: new 62	java/io/File
@@ -172,7 +172,7 @@ public class UploadImageSegment
     //   241: invokevirtual 108	java/io/IOException:printStackTrace	()V
     //   244: goto -31 -> 213
     //   247: astore_2
-    //   248: aload 5
+    //   248: aload 4
     //   250: astore_1
     //   251: aload_1
     //   252: astore_3
@@ -212,7 +212,7 @@ public class UploadImageSegment
     //   322: iconst_0
     //   323: ireturn
     //   324: astore_2
-    //   325: aload 4
+    //   325: aload 5
     //   327: astore_1
     //   328: aload_1
     //   329: astore_3
@@ -294,8 +294,8 @@ public class UploadImageSegment
     //   11	438	3	localObject1	java.lang.Object
     //   452	4	3	localIOException	java.io.IOException
     //   460	4	3	localFileNotFoundException	java.io.FileNotFoundException
-    //   1	325	4	localObject2	java.lang.Object
-    //   7	242	5	localObject3	java.lang.Object
+    //   7	242	4	localObject2	java.lang.Object
+    //   1	325	5	localObject3	java.lang.Object
     //   4	172	6	localObject4	java.lang.Object
     // Exception table:
     //   from	to	target	type
@@ -431,7 +431,7 @@ public class UploadImageSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.arithmetic.stream.UploadImageSegment
  * JD-Core Version:    0.7.0.1
  */

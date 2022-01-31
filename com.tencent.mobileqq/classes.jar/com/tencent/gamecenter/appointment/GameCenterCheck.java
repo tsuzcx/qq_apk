@@ -25,7 +25,7 @@ public class GameCenterCheck
   
   static
   {
-    jdField_a_of_type_JavaLangString = "http://info.gamecenter.qq.com/cgi-bin/gc_pre_download_async_fcgi?param={\"key\":{\"param\":{\"qq_version\":\"7.6.3.3560\"},\"module\":\"gc_pre_download\",\"method\":\"get_pre_download\"}}";
+    jdField_a_of_type_JavaLangString = "http://info.gamecenter.qq.com/cgi-bin/gc_pre_download_async_fcgi?param={\"key\":{\"param\":{\"qq_version\":\"7.6.3.3565\"},\"module\":\"gc_pre_download\",\"method\":\"get_pre_download\"}}";
   }
   
   public GameCenterCheck()

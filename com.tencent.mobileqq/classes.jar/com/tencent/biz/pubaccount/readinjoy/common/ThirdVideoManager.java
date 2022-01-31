@@ -202,7 +202,7 @@ public class ThirdVideoManager
     ArticleCenter.GetVidByUrlRequest localGetVidByUrlRequest = new ArticleCenter.GetVidByUrlRequest();
     ByteStringMicro localByteStringMicro = ByteStringMicro.copyFromUtf8(paramString);
     localGetVidByUrlRequest.url.set(localByteStringMicro);
-    localGetVidByUrlRequest.mv.set(ByteStringMicro.copyFromUtf8("7.6.3,3,3560"));
+    localGetVidByUrlRequest.mv.set(ByteStringMicro.copyFromUtf8("7.6.3,3,3565"));
     localNewIntent.putExtra("data", localGetVidByUrlRequest.toByteArray());
     localNewIntent.setObserver(new llc(this, l, localNewIntent, paramUrlToUUIDCallback, paramString));
     localAppRuntime.startServlet(localNewIntent);
@@ -262,7 +262,7 @@ public class ThirdVideoManager
       localObject2 = new ArticleCenter.GetUrlByVidRequest();
       ByteStringMicro localByteStringMicro = ByteStringMicro.copyFromUtf8(paramString1);
       ((ArticleCenter.GetUrlByVidRequest)localObject2).vid.set(localByteStringMicro);
-      ((ArticleCenter.GetUrlByVidRequest)localObject2).mv.set(ByteStringMicro.copyFromUtf8("7.6.3,3,3560"));
+      ((ArticleCenter.GetUrlByVidRequest)localObject2).mv.set(ByteStringMicro.copyFromUtf8("7.6.3,3,3565"));
       int i = NetUtil.a(null);
       ((ArticleCenter.GetUrlByVidRequest)localObject2).net_type.set(i);
       ((ArticleCenter.GetUrlByVidRequest)localObject2).video_type.set(0);

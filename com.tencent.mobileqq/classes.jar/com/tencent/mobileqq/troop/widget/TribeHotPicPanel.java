@@ -68,7 +68,7 @@ public class TribeHotPicPanel
     {
       this.jdField_a_of_type_Boolean = bool;
       if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.Panel", 2, "onShow 349884 init panelH " + this.d + " needExtendPanel" + this.jdField_a_of_type_Boolean);
+        QLog.d("HotPicManager.Panel", 2, "onShow 351230 init panelH " + this.d + " needExtendPanel" + this.jdField_a_of_type_Boolean);
       }
       localHotPicManager = HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       localHotPicManager.a(this);
@@ -152,7 +152,7 @@ public class TribeHotPicPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TribeHotPicPanel
  * JD-Core Version:    0.7.0.1
  */

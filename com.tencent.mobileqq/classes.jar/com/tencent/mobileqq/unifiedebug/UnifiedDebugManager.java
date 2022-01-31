@@ -171,7 +171,7 @@ public class UnifiedDebugManager
     UnifiedDebugManager.TerminalInfo localTerminalInfo = new UnifiedDebugManager.TerminalInfo(this);
     localTerminalInfo.jdField_a_of_type_JavaLangString = (DeviceInfoUtil.i() + " " + DeviceInfoUtil.e());
     localTerminalInfo.jdField_b_of_type_JavaLangString = Build.VERSION.RELEASE;
-    localTerminalInfo.c = "7.6.3.3560";
+    localTerminalInfo.c = "7.6.3.3565";
     DeviceInfoUtil.NetInfo localNetInfo = DeviceInfoUtil.a(paramContext);
     localTerminalInfo.d = localNetInfo.jdField_a_of_type_JavaLangString;
     localTerminalInfo.e = localNetInfo.c;
@@ -1632,7 +1632,7 @@ public class UnifiedDebugManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.UnifiedDebugManager
  * JD-Core Version:    0.7.0.1
  */

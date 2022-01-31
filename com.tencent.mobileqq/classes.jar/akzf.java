@@ -43,7 +43,7 @@ public class akzf
         localObject3 = new ClientInfoA.EnvParamPacket();
         ((ClientInfoA.EnvParamPacket)localObject3).u32_platform.set(1);
         ((ClientInfoA.EnvParamPacket)localObject3).str_sysversion.set(Build.VERSION.RELEASE);
-        ((ClientInfoA.EnvParamPacket)localObject3).str_qqversion.set("7.6.3.3560");
+        ((ClientInfoA.EnvParamPacket)localObject3).str_qqversion.set("7.6.3.3565");
         ((ClientInfoA.EnvParamPacket)localObject3).u32_appid.set(AppSetting.a);
         ((ClientInfoA.EnvParamPacket)localObject3).bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
         ((ClientInfoA.EnvParamPacket)localObject3).str_uin.set(str);

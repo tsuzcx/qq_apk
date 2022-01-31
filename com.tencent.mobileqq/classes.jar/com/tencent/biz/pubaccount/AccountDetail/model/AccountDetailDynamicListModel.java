@@ -129,7 +129,7 @@ public class AccountDetailDynamicListModel
     NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), PublicAccountServlet.class);
     localNewIntent.putExtra("cmd", "pull_account_detail_dynamic_list");
     Object localObject = new account_detail_dynamic_list.AccountDetailDynamicListRequest();
-    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).versionInfo.set("7.6.3,3,3560");
+    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).versionInfo.set("7.6.3,3,3565");
     ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).puin.set(paramLong1);
     ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).last_msg_id.set(paramLong2);
     ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).msg_cnt.set(paramInt);

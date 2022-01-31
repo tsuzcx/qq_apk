@@ -122,7 +122,7 @@ public class AboutConfig
   {
     AboutConfig localAboutConfig = paramQQAppInterface.a();
     Object localObject2 = paramResourcePluginInfo.strGotoUrl;
-    Object localObject1 = "version=7.6.3.3560&appid=" + AppSetting.a + "&QUA=" + QZoneHelper.a();
+    Object localObject1 = "version=7.6.3.3565&appid=" + AppSetting.a + "&QUA=" + QZoneHelper.a();
     Object localObject3;
     if (!paramResourcePluginInfo.strPkgName.equals("com.tencent.Feedback_5_8"))
     {
@@ -131,7 +131,7 @@ public class AboutConfig
     }
     else
     {
-      localObject3 = (String)localObject1 + "&adtag=3560";
+      localObject3 = (String)localObject1 + "&adtag=3565";
     }
     if (paramResourcePluginInfo.strPkgName.equals("com.tencent.Feedback_5_8"))
     {

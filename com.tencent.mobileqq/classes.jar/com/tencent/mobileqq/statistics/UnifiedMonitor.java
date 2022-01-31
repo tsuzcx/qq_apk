@@ -173,14 +173,14 @@ public class UnifiedMonitor
         localStringBuilder.append("AdditionInfo:0|");
         try
         {
-          PackageManager localPackageManager = BaseApplicationImpl.getApplication().getPackageManager();
+          localObject = BaseApplicationImpl.getApplication().getPackageManager();
           if (this.jdField_b_of_type_JavaLangString == null)
           {
-            localObject = localPackageManager.getPackageInfo("com.tencent.mobileqq", 128);
-            this.jdField_b_of_type_JavaLangString = (((PackageInfo)localObject).versionName + "." + ((PackageInfo)localObject).versionCode);
+            PackageInfo localPackageInfo = ((PackageManager)localObject).getPackageInfo("com.tencent.mobileqq", 128);
+            this.jdField_b_of_type_JavaLangString = (localPackageInfo.versionName + "." + localPackageInfo.versionCode);
           }
           if (this.jdField_c_of_type_JavaLangString == null) {
-            this.jdField_c_of_type_JavaLangString = localPackageManager.getApplicationInfo("com.tencent.mobileqq", 128).metaData.get("com.tencent.rdm.uuid").toString();
+            this.jdField_c_of_type_JavaLangString = ((PackageManager)localObject).getApplicationInfo("com.tencent.mobileqq", 128).metaData.get("com.tencent.rdm.uuid").toString();
           }
           localObject = null;
           if (4 != BaseApplicationImpl.sProcessId) {
@@ -1235,7 +1235,7 @@ public class UnifiedMonitor
     if (paramString != null)
     {
       ((Map)localObject).put("event", paramString);
-      ((Map)localObject).put("revision", "349884");
+      ((Map)localObject).put("revision", "351230");
       if (this.jdField_a_of_type_JavaLangString == null)
       {
         this.jdField_a_of_type_JavaLangString = "dbg";

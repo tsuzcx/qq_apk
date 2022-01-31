@@ -149,7 +149,7 @@ public class AboutActivity
     setTitle(2131435563);
     paramBundle = this.app.a();
     ((ImageView)findViewById(2131362670)).setOnClickListener(new rfm(this));
-    ((TextView)findViewById(2131362671)).setText("V 7.6.3.3560");
+    ((TextView)findViewById(2131362671)).setText("V 7.6.3.3565");
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362681));
     Object localObject = new SpannableString(this.jdField_b_of_type_AndroidWidgetTextView.getText());
     ((SpannableString)localObject).setSpan(new rfu(this, this.jdField_b_of_type_JavaLangString, 2131362681), 0, this.jdField_b_of_type_AndroidWidgetTextView.getText().length(), 17);
@@ -212,18 +212,18 @@ public class AboutActivity
         paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       paramBundle = "appid: " + String.valueOf(AppSetting.jdField_a_of_type_Int) + "\n";
-      paramBundle = paramBundle + "LC: BF266466230731EF\n";
-      paramBundle = paramBundle + "buildNum: 3560\n";
+      paramBundle = paramBundle + "LC: B6ADC917EDCDFB1F\n";
+      paramBundle = paramBundle + "buildNum: 3565\n";
       paramBundle = paramBundle + "isDebugVersion: " + String.valueOf(false) + "\n";
       paramBundle = paramBundle + "subVersion: 7.6.3\n";
       paramBundle = paramBundle + "productID: 130\n";
       paramBundle = paramBundle + "quaAppName: AQQ_2013 4.6\n";
       paramBundle = paramBundle + "supVersion: 2013\n";
-      paramBundle = paramBundle + "revision: 349884\n";
+      paramBundle = paramBundle + "revision: 351230\n";
       paramBundle = paramBundle + "isSkinEngieAccelerated: " + String.valueOf(true) + "\n";
-      paramBundle = paramBundle + "reportVersionName: 7.6.3.3560\n";
-      paramBundle = paramBundle + "aboutSubVersionName: V 7.6.3.3560\n";
-      paramBundle = paramBundle + "aboutSubVersionLog: 7.6.3.3560.2018-05-25.r349884.GuanWang\n";
+      paramBundle = paramBundle + "reportVersionName: 7.6.3.3565\n";
+      paramBundle = paramBundle + "aboutSubVersionName: V 7.6.3.3565\n";
+      paramBundle = paramBundle + "aboutSubVersionLog: 7.6.3.3565.2018-06-01.r351230.BeiYong1\n";
       paramBundle = paramBundle + "isPublicVersion: true\n";
       paramBundle = paramBundle + "versioncode: " + ApkUtils.a(this) + "\n";
       paramBundle = paramBundle + "amem: " + DeviceInfoUtil.f() / 1024L / 1024L + "\n";

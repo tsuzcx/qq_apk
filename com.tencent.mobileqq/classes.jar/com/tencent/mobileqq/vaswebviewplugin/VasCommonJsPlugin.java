@@ -1497,7 +1497,7 @@ public class VasCommonJsPlugin
   private void processWebLog(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    paramString2 = localStringBuilder.append(paramString1).append("|").append(paramString2).append("|").append(paramString3).append("|").append("ANDROID").append("|").append("7.6.3.3560").append("|").append(DeviceInfoUtil.f()).append("|").append(this.mRuntime.a().getCurrentAccountUin()).append("|").append(Build.MODEL).append("|");
+    paramString2 = localStringBuilder.append(paramString1).append("|").append(paramString2).append("|").append(paramString3).append("|").append("ANDROID").append("|").append("7.6.3.3565").append("|").append(DeviceInfoUtil.f()).append("|").append(this.mRuntime.a().getCurrentAccountUin()).append("|").append(Build.MODEL).append("|");
     if (TextUtils.isEmpty(DeviceInfoUtil.a(this.mRuntime.a()).c))
     {
       paramString1 = "未知";
@@ -2190,7 +2190,7 @@ public class VasCommonJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin
  * JD-Core Version:    0.7.0.1
  */

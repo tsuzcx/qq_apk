@@ -68,9 +68,9 @@ public class OfflineExpire$OfflineExpireCheckUpdate
       localReqBody.uint32_cmd.set(2);
       localReqBody.uint32_platform.set(OfflineExpire.jdField_a_of_type_Int);
       if (QLog.isColorLevel()) {
-        QLog.d(OfflineExpire.jdField_a_of_type_JavaLangString, 1, String.format("OfflineExpireCheckUpdate, check update QQ Version: %s", new Object[] { "7.6.3.3560" }));
+        QLog.d(OfflineExpire.jdField_a_of_type_JavaLangString, 1, String.format("OfflineExpireCheckUpdate, check update QQ Version: %s", new Object[] { "7.6.3.3565" }));
       }
-      localReqBody.str_qver.set(ByteStringMicro.copyFrom("7.6.3.3560".getBytes()));
+      localReqBody.str_qver.set(ByteStringMicro.copyFrom("7.6.3.3565".getBytes()));
       localReqBody.str_osrelease.set(ByteStringMicro.copyFrom(Build.VERSION.RELEASE.getBytes()));
       i = NetworkUtil.a(((QQAppInterface)localObject).getApp());
       localReqBody.int32_network.set(i);

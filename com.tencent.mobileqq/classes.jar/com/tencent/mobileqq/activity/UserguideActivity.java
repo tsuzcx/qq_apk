@@ -43,9 +43,9 @@ public class UserguideActivity
         SharedPreferences localSharedPreferences = paramSplashActivity.getSharedPreferences("UserGuide", 0);
         String str = localSharedPreferences.getString("qq_version", null);
         if (QLog.isColorLevel()) {
-          QLog.e("UserGuide", 2, "pkg build num is 3560, local build num is " + str);
+          QLog.e("UserGuide", 2, "pkg build num is 3565, local build num is " + str);
         }
-        if (!"3560".equals(str))
+        if (!"3565".equals(str))
         {
           localHashMap = new HashMap();
           if (TextUtils.isEmpty(str))
@@ -56,13 +56,13 @@ public class UserguideActivity
             localHashMap.put("userguide_update_type", "2");
             StatisticCollector.a(paramSplashActivity).a(null, "userguide_update2", true, 0L, 0L, localHashMap, "", false);
             paramSplashActivity = localSharedPreferences.edit();
-            paramSplashActivity.putString("qq_version", "3560");
+            paramSplashActivity.putString("qq_version", "3565");
             paramSplashActivity.commit();
           }
         }
         else
         {
-          QLog.e("UserGuide", 1, "showUserGuide " + a + ", " + str + ", " + "3560");
+          QLog.e("UserGuide", 1, "showUserGuide " + a + ", " + str + ", " + "3565");
           return false;
         }
       }

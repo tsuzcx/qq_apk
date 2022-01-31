@@ -22,7 +22,7 @@ public class GdtActionReporter$Params
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtActionReporter.Params
  * JD-Core Version:    0.7.0.1
  */

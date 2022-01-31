@@ -1135,7 +1135,7 @@ public class MigrateSubscribeDB
     //   246: astore 7
     //   248: aload 7
     //   250: invokeinterface 422 1 0
-    //   255: ifeq +1222 -> 1477
+    //   255: ifeq +1210 -> 1465
     //   258: aload 7
     //   260: invokeinterface 426 1 0
     //   265: checkcast 428	java/io/File
@@ -1161,7 +1161,7 @@ public class MigrateSubscribeDB
     //   316: aload 11
     //   318: astore 7
     //   320: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   323: ifeq +1157 -> 1480
+    //   323: ifeq +1145 -> 1468
     //   326: ldc 80
     //   328: iconst_2
     //   329: new 179	java/lang/StringBuilder
@@ -1175,7 +1175,7 @@ public class MigrateSubscribeDB
     //   350: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   353: aload 11
     //   355: astore 7
-    //   357: goto +1123 -> 1480
+    //   357: goto +1111 -> 1468
     //   360: aload_0
     //   361: getfield 655	com/tencent/mobileqq/startup/step/MigrateSubscribeDB:c	Ljava/util/List;
     //   364: invokeinterface 387 1 0
@@ -1186,7 +1186,7 @@ public class MigrateSubscribeDB
     //   381: astore 7
     //   383: aload 7
     //   385: invokeinterface 422 1 0
-    //   390: ifeq +1081 -> 1471
+    //   390: ifeq +1069 -> 1459
     //   393: aload 7
     //   395: invokeinterface 426 1 0
     //   400: checkcast 428	java/io/File
@@ -1212,7 +1212,7 @@ public class MigrateSubscribeDB
     //   451: aload 13
     //   453: astore 7
     //   455: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   458: ifeq +1029 -> 1487
+    //   458: ifeq +1017 -> 1475
     //   461: ldc 80
     //   463: iconst_2
     //   464: new 179	java/lang/StringBuilder
@@ -1226,7 +1226,7 @@ public class MigrateSubscribeDB
     //   485: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   488: aload 13
     //   490: astore 7
-    //   492: goto +995 -> 1487
+    //   492: goto +983 -> 1475
     //   495: aload 13
     //   497: ifnonnull +352 -> 849
     //   500: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1275,9 +1275,9 @@ public class MigrateSubscribeDB
     //   598: goto -350 -> 248
     //   601: astore 10
     //   603: aconst_null
-    //   604: astore 7
-    //   606: aconst_null
-    //   607: astore_1
+    //   604: astore_1
+    //   605: aconst_null
+    //   606: astore 7
     //   608: aload 10
     //   610: invokevirtual 215	java/lang/Exception:printStackTrace	()V
     //   613: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1286,17 +1286,17 @@ public class MigrateSubscribeDB
     //   621: iconst_2
     //   622: ldc_w 690
     //   625: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   628: aload 7
-    //   630: ifnull +8 -> 638
-    //   633: aload 7
-    //   635: invokevirtual 694	com/tencent/mobileqq/app/SQLiteDatabase:c	()V
-    //   638: aload 8
-    //   640: ifnull +8 -> 648
-    //   643: aload 8
-    //   645: invokevirtual 696	com/tencent/mobileqq/persistence/EntityManager:a	()V
-    //   648: aload_1
-    //   649: ifnull +7 -> 656
-    //   652: aload_1
+    //   628: aload_1
+    //   629: ifnull +7 -> 636
+    //   632: aload_1
+    //   633: invokevirtual 694	com/tencent/mobileqq/app/SQLiteDatabase:c	()V
+    //   636: aload 8
+    //   638: ifnull +8 -> 646
+    //   641: aload 8
+    //   643: invokevirtual 696	com/tencent/mobileqq/persistence/EntityManager:a	()V
+    //   646: aload 7
+    //   648: ifnull +8 -> 656
+    //   651: aload 7
     //   653: invokevirtual 699	com/tencent/mobileqq/persistence/EntityManagerFactory:close	()V
     //   656: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   659: ifeq +44 -> 703
@@ -1540,17 +1540,17 @@ public class MigrateSubscribeDB
     //   1218: aload_0
     //   1219: getfield 653	com/tencent/mobileqq/startup/step/MigrateSubscribeDB:jdField_b_of_type_JavaUtilList	Ljava/util/List;
     //   1222: invokeinterface 417 1 0
-    //   1227: astore 10
-    //   1229: aload 10
+    //   1227: astore 9
+    //   1229: aload 9
     //   1231: invokeinterface 422 1 0
     //   1236: ifeq -95 -> 1141
-    //   1239: aload 10
+    //   1239: aload 9
     //   1241: invokeinterface 426 1 0
     //   1246: checkcast 428	java/io/File
     //   1249: invokevirtual 431	java/io/File:getName	()Ljava/lang/String;
-    //   1252: astore 9
+    //   1252: astore 10
     //   1254: aload_0
-    //   1255: aload 9
+    //   1255: aload 10
     //   1257: invokespecial 754	com/tencent/mobileqq/startup/step/MigrateSubscribeDB:a	(Ljava/lang/String;)[Ljava/lang/String;
     //   1260: astore 11
     //   1262: aload 11
@@ -1576,7 +1576,7 @@ public class MigrateSubscribeDB
     //   1308: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1311: ldc_w 769
     //   1314: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1317: aload 9
+    //   1317: aload 10
     //   1319: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1322: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1325: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -1602,7 +1602,7 @@ public class MigrateSubscribeDB
     //   1361: istore_2
     //   1362: goto -26 -> 1336
     //   1365: aload_0
-    //   1366: aload 9
+    //   1366: aload 10
     //   1368: aload 17
     //   1370: aload 11
     //   1372: aload_1
@@ -1637,60 +1637,52 @@ public class MigrateSubscribeDB
     //   1432: astore 8
     //   1434: goto -690 -> 744
     //   1437: astore 10
-    //   1439: aload 7
-    //   1441: astore 9
-    //   1443: aload_1
-    //   1444: astore 7
-    //   1446: aload 10
-    //   1448: astore_1
-    //   1449: goto -705 -> 744
-    //   1452: astore 10
-    //   1454: aconst_null
-    //   1455: astore 8
-    //   1457: aload 7
-    //   1459: astore_1
-    //   1460: aload 8
-    //   1462: astore 7
-    //   1464: aload 9
-    //   1466: astore 8
-    //   1468: goto -860 -> 608
-    //   1471: aconst_null
-    //   1472: astore 7
-    //   1474: goto +13 -> 1487
-    //   1477: aconst_null
-    //   1478: astore 7
-    //   1480: aload 7
-    //   1482: astore 11
-    //   1484: goto -1124 -> 360
-    //   1487: aload 7
-    //   1489: astore 13
-    //   1491: goto -996 -> 495
-    //   1494: astore 10
-    //   1496: aload 7
-    //   1498: astore_1
-    //   1499: aload 12
-    //   1501: astore 7
-    //   1503: goto -895 -> 608
+    //   1439: aload_1
+    //   1440: astore 9
+    //   1442: aload 10
+    //   1444: astore_1
+    //   1445: goto -701 -> 744
+    //   1448: astore 10
+    //   1450: aconst_null
+    //   1451: astore_1
+    //   1452: aload 9
+    //   1454: astore 8
+    //   1456: goto -848 -> 608
+    //   1459: aconst_null
+    //   1460: astore 7
+    //   1462: goto +13 -> 1475
+    //   1465: aconst_null
+    //   1466: astore 7
+    //   1468: aload 7
+    //   1470: astore 11
+    //   1472: goto -1112 -> 360
+    //   1475: aload 7
+    //   1477: astore 13
+    //   1479: goto -984 -> 495
+    //   1482: astore 10
+    //   1484: aload 12
+    //   1486: astore_1
+    //   1487: goto -879 -> 608
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1506	0	this	MigrateSubscribeDB
-    //   0	1506	1	paramFile	File
+    //   0	1490	0	this	MigrateSubscribeDB
+    //   0	1490	1	paramFile	File
     //   1335	27	2	i	int
     //   1279	60	3	j	int
     //   20	976	4	bool	boolean
     //   63	619	5	l	long
-    //   72	1430	7	localObject1	Object
-    //   90	1377	8	localObject2	Object
-    //   81	1384	9	localObject3	Object
+    //   72	1404	7	localObject1	Object
+    //   90	1365	8	localObject2	Object
+    //   81	1372	9	localObject3	Object
     //   78	1	10	localObject4	Object
     //   601	132	10	localException1	Exception
     //   906	525	10	localObject5	Object
-    //   1437	10	10	localObject6	Object
-    //   1452	1	10	localException2	Exception
-    //   1494	1	10	localException3	Exception
-    //   69	1414	11	localObject7	Object
-    //   87	1413	12	localSQLiteDatabase	com.tencent.mobileqq.app.SQLiteDatabase
-    //   406	1084	13	localObject8	Object
+    //   1437	6	10	localObject6	Object
+    //   1448	1	10	localException2	Exception
+    //   1482	1	10	localException3	Exception
+    //   69	1402	11	localObject7	Object
+    //   87	1398	12	localSQLiteDatabase	com.tencent.mobileqq.app.SQLiteDatabase
+    //   406	1072	13	localObject8	Object
     //   93	1334	14	localObject9	Object
     //   84	1327	15	localEntityTransaction	com.tencent.mobileqq.persistence.EntityTransaction
     //   75	768	16	localObject10	Object
@@ -1766,15 +1758,15 @@ public class MigrateSubscribeDB
     //   927	934	1425	finally
     //   942	954	1425	finally
     //   608	628	1437	finally
-    //   912	919	1452	java/lang/Exception
-    //   927	934	1452	java/lang/Exception
-    //   942	954	1452	java/lang/Exception
-    //   954	994	1494	java/lang/Exception
-    //   1029	1094	1494	java/lang/Exception
-    //   1094	1099	1494	java/lang/Exception
-    //   1153	1158	1494	java/lang/Exception
-    //   1401	1406	1494	java/lang/Exception
-    //   1410	1417	1494	java/lang/Exception
+    //   912	919	1448	java/lang/Exception
+    //   927	934	1448	java/lang/Exception
+    //   942	954	1448	java/lang/Exception
+    //   954	994	1482	java/lang/Exception
+    //   1029	1094	1482	java/lang/Exception
+    //   1094	1099	1482	java/lang/Exception
+    //   1153	1158	1482	java/lang/Exception
+    //   1401	1406	1482	java/lang/Exception
+    //   1410	1417	1482	java/lang/Exception
   }
   
   /* Error */
@@ -2421,7 +2413,7 @@ public class MigrateSubscribeDB
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.MigrateSubscribeDB
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ public final class mobileqq_mp$GetPublicInfoResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.mp.mobileqq_mp.GetPublicInfoResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -39,23 +39,14 @@ public class QQStoryConfigServlet
   
   static
   {
-    Object localObject = { 2131689489, -127 };
-    int[] arrayOfInt1 = { 2131689490, -128 };
-    int[] arrayOfInt2 = { 2131689491, -150 };
-    int[] arrayOfInt3 = { 2131689492, -151 };
-    int[] arrayOfInt4 = { 2131689493, -208 };
-    int[] arrayOfInt5 = { 2131689495, 152 };
-    int[] arrayOfInt6 = { 2131689496, 317 };
-    int[] arrayOfInt7 = { 2131689497, 318 };
-    int[] arrayOfInt8 = { -1, 219 };
-    jdField_a_of_type_Array2dOfInt = new int[][] { localObject, arrayOfInt1, arrayOfInt2, arrayOfInt3, arrayOfInt4, { 2131689494, -220 }, arrayOfInt5, arrayOfInt6, arrayOfInt7, arrayOfInt8 };
+    jdField_a_of_type_Array2dOfInt = new int[][] { { 2131689489, -127 }, { 2131689490, -128 }, { 2131689491, -150 }, { 2131689492, -151 }, { 2131689493, -208 }, { 2131689494, -220 }, { 2131689495, 152 }, { 2131689496, 317 }, { 2131689497, 318 }, { -1, 219 } };
     jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray(jdField_a_of_type_Array2dOfInt.length);
-    localObject = jdField_a_of_type_Array2dOfInt;
-    int j = localObject.length;
+    int[][] arrayOfInt = jdField_a_of_type_Array2dOfInt;
+    int j = arrayOfInt.length;
     int i = 0;
     if (i < j)
     {
-      arrayOfInt1 = localObject[i];
+      int[] arrayOfInt1 = arrayOfInt[i];
       int k = arrayOfInt1[0];
       int m = arrayOfInt1[1];
       if (k != -1) {

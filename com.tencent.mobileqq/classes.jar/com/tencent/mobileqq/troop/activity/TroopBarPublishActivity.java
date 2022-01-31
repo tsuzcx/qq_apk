@@ -1852,7 +1852,7 @@ public class TroopBarPublishActivity
         i = 210;
         ((JSONObject)localObject3).put("type", i);
         ((JSONObject)localObject3).put("extparam", this.F);
-        ((JSONObject)localObject3).put("version", "7.6.3.3560");
+        ((JSONObject)localObject3).put("version", "7.6.3.3565");
         ((JSONObject)localObject3).put("pfrom", this.jdField_b_of_type_JavaLangString);
         if ((this.jdField_b_of_type_AndroidWidgetTextView == null) || (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0)) {
           break label2246;
@@ -2195,7 +2195,7 @@ public class TroopBarPublishActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ public class Rdm
     long l = SystemClock.uptimeMillis();
     MTAReportController localMTAReportController = MTAReportController.a(BaseApplicationImpl.sApplication);
     localMTAReportController.a(false);
-    localMTAReportController.initMtaConfig("2017", "AGU36HSC29K4");
+    localMTAReportController.initMtaConfig("10001264", "AGU36HSC29K4");
     if (!paramString1.endsWith(":openSdk")) {
       localMTAReportController.a(paramString2);
     }
@@ -99,7 +99,7 @@ public class Rdm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.Rdm
  * JD-Core Version:    0.7.0.1
  */

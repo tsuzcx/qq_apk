@@ -66,7 +66,7 @@ public class TroopBarCommentWindow
       localJSONObject.put("bid", Long.parseLong(this.d));
       localJSONObject.put("target_rid", this.g);
       localJSONObject.put("comment", TroopBarPublishUtils.a(paramString, null, null));
-      localJSONObject.put("version", "7.6.3.3560");
+      localJSONObject.put("version", "7.6.3.3565");
       localJSONObject.put("extparam", this.i);
       paramString = new NewIntent(this.jdField_a_of_type_AndroidContentContext, ProtoServlet.class);
       paramString.putExtra("cmd", "MQUpdateSvc_com_qq_xiaoqu.web.recomment");
@@ -102,7 +102,7 @@ public class TroopBarCommentWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarCommentWindow
  * JD-Core Version:    0.7.0.1
  */

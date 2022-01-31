@@ -7,7 +7,7 @@ public class QUA
   
   public static String a()
   {
-    return "V1_AND_SQ_7.6.3_850_YYB_D";
+    return "V1_AND_SQ_7.6.3_852_YYB_D";
   }
   
   public static String b()
@@ -28,8 +28,8 @@ public class QUA
   
   private static String d()
   {
-    int i = "V1_AND_SQ_7.6.3_850_YYB_D".indexOf("_");
-    int k = "V1_AND_SQ_7.6.3_850_YYB_D".lastIndexOf("_");
+    int i = "V1_AND_SQ_7.6.3_852_YYB_D".indexOf("_");
+    int k = "V1_AND_SQ_7.6.3_852_YYB_D".lastIndexOf("_");
     if (i < 0) {
       i = 0;
     }
@@ -37,9 +37,9 @@ public class QUA
     {
       int j = k;
       if (k < 0) {
-        j = "V1_AND_SQ_7.6.3_850_YYB_D".length();
+        j = "V1_AND_SQ_7.6.3_852_YYB_D".length();
       }
-      return "V1_AND_SQ_7.6.3_850_YYB_D".substring(i, j);
+      return "V1_AND_SQ_7.6.3_852_YYB_D".substring(i, j);
       i += 1;
     }
   }

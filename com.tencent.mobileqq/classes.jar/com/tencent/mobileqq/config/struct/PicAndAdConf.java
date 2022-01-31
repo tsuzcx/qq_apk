@@ -181,9 +181,9 @@ public class PicAndAdConf
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
+    //   1: astore 5
     //   3: aconst_null
-    //   4: astore 5
+    //   4: astore 4
     //   6: iconst_1
     //   7: istore_3
     //   8: new 27	java/io/File
@@ -257,13 +257,13 @@ public class PicAndAdConf
     //   155: pop
     //   156: goto -47 -> 109
     //   159: astore_1
-    //   160: aload 5
-    //   162: astore_1
+    //   160: aload 4
+    //   162: astore_2
     //   163: iconst_0
     //   164: istore_3
-    //   165: aload_1
+    //   165: aload_2
     //   166: ifnull -22 -> 144
-    //   169: aload_1
+    //   169: aload_2
     //   170: invokevirtual 71	java/io/FileOutputStream:close	()V
     //   173: iconst_0
     //   174: ireturn
@@ -278,7 +278,7 @@ public class PicAndAdConf
     //   187: iconst_1
     //   188: ireturn
     //   189: astore_1
-    //   190: aload 4
+    //   190: aload 5
     //   192: astore_2
     //   193: aload_2
     //   194: ifnull +7 -> 201
@@ -293,17 +293,15 @@ public class PicAndAdConf
     //   211: astore_1
     //   212: goto -19 -> 193
     //   215: astore_1
-    //   216: aload_2
-    //   217: astore_1
-    //   218: goto -55 -> 163
+    //   216: goto -53 -> 163
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	221	0	this	PicAndAdConf
-    //   0	221	1	paramArrayOfByte	byte[]
-    //   0	221	2	paramString	String
+    //   0	219	0	this	PicAndAdConf
+    //   0	219	1	paramArrayOfByte	byte[]
+    //   0	219	2	paramString	String
     //   7	158	3	bool	boolean
-    //   1	190	4	localObject1	java.lang.Object
-    //   4	157	5	localObject2	java.lang.Object
+    //   4	157	4	localObject1	java.lang.Object
+    //   1	190	5	localObject2	java.lang.Object
     //   42	50	6	localFile	File
     // Exception table:
     //   from	to	target	type

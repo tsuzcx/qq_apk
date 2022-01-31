@@ -194,7 +194,7 @@ public class SharedPreUtils
   
   public static int H(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "subscript_recommend_config_version" + "_" + "7.6.3.3560", 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "subscript_recommend_config_version" + "_" + "7.6.3.3565", 0);
   }
   
   public static void H(Context paramContext, String paramString)
@@ -445,7 +445,7 @@ public class SharedPreUtils
   
   public static int Z(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("readinjoy_crop_and_group_version_3560_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("readinjoy_crop_and_group_version_3565_" + paramString, 0);
   }
   
   public static void Z(Context paramContext, String paramString, int paramInt)
@@ -2819,7 +2819,7 @@ public class SharedPreUtils
   public static void m(Context paramContext, String paramString, int paramInt)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt(paramString + "_" + "subscript_recommend_config_version" + "_" + "7.6.3.3560", paramInt);
+    paramContext.putInt(paramString + "_" + "subscript_recommend_config_version" + "_" + "7.6.3.3565", paramInt);
     paramContext.commit();
   }
   
@@ -3424,7 +3424,7 @@ public class SharedPreUtils
   public static void v(Context paramContext, int paramInt, String paramString)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt("readinjoy_crop_and_group_version_3560_" + paramString, paramInt);
+    paramContext.putInt("readinjoy_crop_and_group_version_3565_" + paramString, paramInt);
     paramContext.commit();
   }
   

@@ -119,7 +119,7 @@ public class ApolloConfigUtils
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
-    return paramString.replace("[client]", "androidQQ").replace("[version]", "7.6.3.3560").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE).replace("[systemInt]", Integer.toString(Build.VERSION.SDK_INT));
+    return paramString.replace("[client]", "androidQQ").replace("[version]", "7.6.3.3565").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE).replace("[systemInt]", Integer.toString(Build.VERSION.SDK_INT));
   }
   
   public static void a(String paramString)

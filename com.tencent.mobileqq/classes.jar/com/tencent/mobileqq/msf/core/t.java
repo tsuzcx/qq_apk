@@ -248,18 +248,18 @@ public class t
     //   19: pop
     //   20: aload_1
     //   21: invokeinterface 289 1 0
-    //   26: astore_1
-    //   27: aload_1
+    //   26: astore_2
+    //   27: aload_2
     //   28: invokeinterface 294 1 0
     //   33: ifeq +103 -> 136
-    //   36: aload_1
+    //   36: aload_2
     //   37: invokeinterface 298 1 0
     //   42: checkcast 300	com/tencent/qphone/base/remote/SimpleAccount
-    //   45: astore_2
+    //   45: astore_1
     //   46: aload_3
-    //   47: aload_2
+    //   47: aload_1
     //   48: invokevirtual 301	com/tencent/qphone/base/remote/SimpleAccount:getUin	()Ljava/lang/String;
-    //   51: aload_2
+    //   51: aload_1
     //   52: invokevirtual 304	com/tencent/qphone/base/remote/SimpleAccount:toStoreString	()Ljava/lang/String;
     //   55: invokevirtual 308	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   58: pop
@@ -386,7 +386,7 @@ public class t
     //   start	length	slot	name	signature
     //   0	287	0	paramFile	File
     //   0	287	1	paramList	List
-    //   45	163	2	localObject	Object
+    //   26	182	2	localObject	Object
     //   243	2	2	localIOException	IOException
     //   7	40	3	localProperties	Properties
     //   62	86	3	localException1	Exception

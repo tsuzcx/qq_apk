@@ -79,7 +79,7 @@ public class aign
             localObject3 = paramMessage;
           }
         }
-        BatteryLog.b(new Object[] { "header", localObject3, "349884", "pub", localObject1, Build.MANUFACTURER, Build.MODEL, Integer.valueOf(Build.VERSION.SDK_INT), Long.valueOf(BatteryLog.a()), "1.3" });
+        BatteryLog.b(new Object[] { "header", localObject3, "351230", "pub", localObject1, Build.MANUFACTURER, Build.MODEL, Integer.valueOf(Build.VERSION.SDK_INT), Long.valueOf(BatteryLog.a()), "1.3" });
         return;
       }
       catch (Throwable paramMessage)

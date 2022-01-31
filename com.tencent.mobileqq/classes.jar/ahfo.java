@@ -19,7 +19,7 @@ public class ahfo
   {
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager.a.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("7.6.3.3560");
+    localReportReqBody.clientver.set("7.6.3.3565");
     localReportReqBody.platid.set(109);
     localReportReqBody.appid.set(RedTouchManager.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path.get()));
     localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");

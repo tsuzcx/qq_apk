@@ -87,7 +87,7 @@ public class VasMonitorHandler
     paramArrayList1 = new VasReporter.ReqBody();
     paramArrayList1.cmd.set(1);
     paramArrayList1.plat.set(109);
-    paramArrayList1.qqversion.set("7.6.3.3560");
+    paramArrayList1.qqversion.set("7.6.3.3565");
     paramArrayList1.osversion.set(Build.VERSION.RELEASE);
     paramArrayList1.statis_list.set(a(new VasReporter.StatisInfo[] { localStatisInfo }));
     paramArrayList1.setHasFlag(true);
@@ -197,7 +197,7 @@ public class VasMonitorHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasMonitorHandler
  * JD-Core Version:    0.7.0.1
  */

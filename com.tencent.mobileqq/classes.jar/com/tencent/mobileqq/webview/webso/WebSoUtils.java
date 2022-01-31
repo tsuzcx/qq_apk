@@ -39,7 +39,7 @@ public class WebSoUtils
     for (;;)
     {
       localObject = new StringBuilder((String)localObject);
-      ((StringBuilder)localObject).append(" ").append("QQ/").append("7.6.3").append(".").append("3560").append(str).append(" Pixel/").append(BaseApplicationImpl.getContext().getResources().getDisplayMetrics().widthPixels);
+      ((StringBuilder)localObject).append(" ").append("QQ/").append("7.6.3").append(".").append("3565").append(str).append(" Pixel/").append(BaseApplicationImpl.getContext().getResources().getDisplayMetrics().widthPixels);
       return ((StringBuilder)localObject).toString();
       str = " NetType/UNKNOWN";
       continue;
@@ -863,7 +863,7 @@ public class WebSoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoUtils
  * JD-Core Version:    0.7.0.1
  */

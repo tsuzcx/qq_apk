@@ -431,10 +431,10 @@ public class SplashActivity
     if ((this.app == null) || ((!this.app.isLogin()) && (this.app.getKickIntent() == null)))
     {
       localObject = getSharedPreferences("UserGuide", 0).edit();
-      ((SharedPreferences.Editor)localObject).putString("qq_version", "3560");
+      ((SharedPreferences.Editor)localObject).putString("qq_version", "3565");
       ((SharedPreferences.Editor)localObject).commit();
       if (QLog.isColorLevel()) {
-        QLog.e("SplashActivity", 2, "record build num : 3560");
+        QLog.e("SplashActivity", 2, "record build num : 3565");
       }
       startActivity(new Intent(this, LoginActivity.class));
       return true;

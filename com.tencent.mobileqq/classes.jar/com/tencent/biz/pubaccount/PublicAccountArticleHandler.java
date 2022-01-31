@@ -739,7 +739,7 @@ public class PublicAccountArticleHandler
     ByteStringMicro localByteStringMicro = ByteStringMicro.copyFromUtf8(paramString1);
     localGetPhotoCollectionInfoRequest.article_id.set(localByteStringMicro);
     localGetPhotoCollectionInfoRequest.cuin.set(Long.valueOf(c()).longValue());
-    localGetPhotoCollectionInfoRequest.versionInfo.set("7.6.3,3,3560");
+    localGetPhotoCollectionInfoRequest.versionInfo.set("7.6.3,3,3565");
     localGetPhotoCollectionInfoRequest.click_source.set(paramInt2);
     localGetPhotoCollectionInfoRequest.recommend_position.set(paramInt1);
     localGetPhotoCollectionInfoRequest.recommend_source.set(paramString2);
@@ -767,7 +767,7 @@ public class PublicAccountArticleHandler
     localReportGalleryInfoRequest.is_qq.set(1);
     paramString2 = ByteStringMicro.copyFromUtf8("7.6.3");
     localReportGalleryInfoRequest.mv.set(paramString2);
-    paramString2 = ByteStringMicro.copyFromUtf8("3560");
+    paramString2 = ByteStringMicro.copyFromUtf8("3565");
     localReportGalleryInfoRequest.subv.set(paramString2);
     paramString2 = ByteStringMicro.copyFromUtf8(com.tencent.mobileqq.app.AppConstants.c[com.tencent.mobileqq.utils.NetworkUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getBaseContext())]);
     localReportGalleryInfoRequest.network.set(paramString2);
@@ -862,7 +862,7 @@ public class PublicAccountArticleHandler
     paramString = ByteStringMicro.copyFromUtf8(paramString);
     localGetRecommendInfoRequest.article_id.set(paramString);
     localGetRecommendInfoRequest.cuin.set(Long.valueOf(c()).longValue());
-    localGetRecommendInfoRequest.versionInfo.set("7.6.3,3,3560");
+    localGetRecommendInfoRequest.versionInfo.set("7.6.3,3,3565");
     paramString = a("PubAccountArticleCenter.GetRecommendInfo");
     paramString.putWupBuffer(localGetRecommendInfoRequest.toByteArray());
     paramString.setTimeout(30000L);

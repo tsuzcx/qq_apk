@@ -403,7 +403,7 @@ public class TroopTopicMgr
         localJSONObject.put("comment", TroopBarPublishUtils.a(new QQText(str, 13).a(), null, null));
         localJSONObject.put("msgRand", MessageUtils.a(paramMessageRecord.msgUid));
         localJSONObject.put("oriMsgSeq", String.valueOf(paramMessageRecord.shmsgseq));
-        localJSONObject.put("version", "7.6.3.3560");
+        localJSONObject.put("version", "7.6.3.3565");
         if (QLog.isColorLevel()) {
           QLog.d("zivonchen", 2, "commendTopic msgRand = " + MessageUtils.a(paramMessageRecord.msgUid) + ", msgUid = " + paramMessageRecord.msgUid);
         }
@@ -901,7 +901,7 @@ public class TroopTopicMgr
       localJSONObject.put("comment", TroopBarPublishUtils.a(new QQText(paramString2, 13).a(), null, null));
       localJSONObject.put("msgRand", MessageUtils.a(paramMessageRecord.msgUid));
       localJSONObject.put("oriMsgSeq", String.valueOf(paramMessageRecord.shmsgseq));
-      localJSONObject.put("version", "7.6.3.3560");
+      localJSONObject.put("version", "7.6.3.3565");
       localWebSsoRequestBody.data.set(localJSONObject.toString());
       ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ajqy(this, paramWriteCommentCallback, paramMessageRecord), localWebSsoRequestBody.toByteArray(), "MQUpdateSvc_com_qq_buluo.web.sbar_comment");
       return;
@@ -1212,7 +1212,7 @@ public class TroopTopicMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopTopicMgr
  * JD-Core Version:    0.7.0.1
  */

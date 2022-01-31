@@ -164,33 +164,34 @@ public class CommonUsedSystemEmojiManager
       }
       for (;;)
       {
-        Object localObject;
+        Object localObject1;
+        Object localObject2;
         if (QLog.isColorLevel())
         {
-          localObject = new StringBuilder("mergeAndSortSystemEmojiInfo:");
+          localObject1 = new StringBuilder("mergeAndSortSystemEmojiInfo:");
           if (paramList1 != null)
           {
-            ((StringBuilder)localObject).append("befor sort list1 : ");
+            ((StringBuilder)localObject1).append("befor sort list1 : ");
             i = 0;
             while (i < paramList1.size())
             {
-              EmosmPb.SmallYellowItem localSmallYellowItem = (EmosmPb.SmallYellowItem)paramList1.get(i);
-              ((StringBuilder)localObject).append("type = " + localSmallYellowItem.type.get()).append(";id = " + localSmallYellowItem.id.get()).append(";ts = " + localSmallYellowItem.ts.get());
+              localObject2 = (EmosmPb.SmallYellowItem)paramList1.get(i);
+              ((StringBuilder)localObject1).append("type = " + ((EmosmPb.SmallYellowItem)localObject2).type.get()).append(";id = " + ((EmosmPb.SmallYellowItem)localObject2).id.get()).append(";ts = " + ((EmosmPb.SmallYellowItem)localObject2).ts.get());
               i += 1;
             }
           }
           if (paramList2 != null)
           {
-            ((StringBuilder)localObject).append("befor sort list2 : ");
+            ((StringBuilder)localObject1).append("befor sort list2 : ");
             i = 0;
             while (i < paramList2.size())
             {
               paramList1 = (EmosmPb.SmallYellowItem)paramList2.get(i);
-              ((StringBuilder)localObject).append("type = " + paramList1.type.get()).append(";id = " + paramList1.id.get()).append(";ts = " + paramList1.ts.get());
+              ((StringBuilder)localObject1).append("type = " + paramList1.type.get()).append(";id = " + paramList1.id.get()).append(";ts = " + paramList1.ts.get());
               i += 1;
             }
           }
-          QLog.d("CommonUsedSystemEmojiManager", 2, "mergeAndSortSystemEmojiInfo merge:" + ((StringBuilder)localObject).toString());
+          QLog.d("CommonUsedSystemEmojiManager", 2, "mergeAndSortSystemEmojiInfo merge:" + ((StringBuilder)localObject1).toString());
         }
         Collections.sort(localList, new acea(this));
         if (QLog.isColorLevel())
@@ -210,12 +211,12 @@ public class CommonUsedSystemEmojiManager
         paramList2 = localList.iterator();
         while (paramList2.hasNext())
         {
-          localObject = (EmosmPb.SmallYellowItem)paramList2.next();
-          localObject = ((EmosmPb.SmallYellowItem)localObject).type.get() + "-" + ((EmosmPb.SmallYellowItem)localObject).id.get();
-          if (paramList1.contains(localObject)) {
+          localObject1 = (EmosmPb.SmallYellowItem)paramList2.next();
+          localObject2 = ((EmosmPb.SmallYellowItem)localObject1).type.get() + "-" + ((EmosmPb.SmallYellowItem)localObject1).id.get();
+          if ((paramList1.contains(localObject2)) || ((((EmosmPb.SmallYellowItem)localObject1).type.get() == 1) && (((EmosmPb.SmallYellowItem)localObject1).id.get() == 117))) {
             paramList2.remove();
           } else {
-            paramList1.add(localObject);
+            paramList1.add(localObject2);
           }
         }
         paramList1 = localList;

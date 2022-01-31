@@ -171,7 +171,7 @@ public class PublicAccountManager
       localSendMenuEventRequest.key.set(paramString);
       localSendMenuEventRequest.msg_id.set(0L);
       localSendMenuEventRequest.s_type.set(1);
-      localSendMenuEventRequest.versionInfo.set("7.6.3,3,3560");
+      localSendMenuEventRequest.versionInfo.set("7.6.3,3,3565");
       localSendMenuEventRequest.menu_type.set(b(str));
       if (paramBoolean) {
         localSendMenuEventRequest.is_new_menu.set(paramBoolean);

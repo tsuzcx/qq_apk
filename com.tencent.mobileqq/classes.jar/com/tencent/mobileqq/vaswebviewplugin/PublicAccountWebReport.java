@@ -73,7 +73,7 @@ public class PublicAccountWebReport
   {
     int i = NetUtil.a(null);
     if (QLog.isColorLevel()) {
-      QLog.i("PublicAccountWebReport", 2, "urlStr: " + paramString1 + ",errorcode:" + paramInt3 + ",netType:" + i + ",DNSCost" + paramInt2 + ",connectCost:" + paramInt1 + ",receiveCost:" + paramInt4 + ",website_address:" + paramString2 + ",AppSetting.subVersion:" + "7.6.3,3,3560");
+      QLog.i("PublicAccountWebReport", 2, "urlStr: " + paramString1 + ",errorcode:" + paramInt3 + ",netType:" + i + ",DNSCost" + paramInt2 + ",connectCost:" + paramInt1 + ",receiveCost:" + paramInt4 + ",website_address:" + paramString2 + ",AppSetting.subVersion:" + "7.6.3,3,3565");
     }
     if (paramAppRuntime == null) {}
     while (!netShouldReport(paramInt1 + paramInt2 + paramInt4)) {
@@ -83,7 +83,7 @@ public class PublicAccountWebReport
     localNewIntent.putExtra("cmd", "PubAccountSvc.net_connect_info");
     ArticleComment.ReportNetConnectInfoRequest localReportNetConnectInfoRequest = new ArticleComment.ReportNetConnectInfoRequest();
     localReportNetConnectInfoRequest.netType.set(i);
-    localReportNetConnectInfoRequest.versionInfo.set("7.6.3,3,3560");
+    localReportNetConnectInfoRequest.versionInfo.set("7.6.3,3,3565");
     localReportNetConnectInfoRequest.connectCost.set(paramInt1);
     localReportNetConnectInfoRequest.DNSCost.set(paramInt2);
     localReportNetConnectInfoRequest.errorcode.set(paramInt3);
@@ -97,7 +97,7 @@ public class PublicAccountWebReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.PublicAccountWebReport
  * JD-Core Version:    0.7.0.1
  */

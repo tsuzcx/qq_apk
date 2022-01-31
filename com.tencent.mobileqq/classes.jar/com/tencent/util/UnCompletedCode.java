@@ -5,7 +5,7 @@ import java.lang.annotation.Annotation;
 public @interface UnCompletedCode {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.util.UnCompletedCode
  * JD-Core Version:    0.7.0.1
  */

@@ -237,7 +237,7 @@ public class RedTouchManager
   {
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("7.6.3.3560");
+    localReportReqBody.clientver.set("7.6.3.3565");
     localReportReqBody.platid.set(109);
     localReportReqBody.appid.set(a(paramAppInfo.path.get()));
     localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
@@ -276,7 +276,7 @@ public class RedTouchManager
     {
       BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
       localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-      localReportReqBody.clientver.set("7.6.3.3560");
+      localReportReqBody.clientver.set("7.6.3.3565");
       localReportReqBody.platid.set(109);
       localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
       localReportReqBody.buffer.set(paramJSONObject.toString());
@@ -323,7 +323,7 @@ public class RedTouchManager
   {
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("7.6.3.3560");
+    localReportReqBody.clientver.set("7.6.3.3565");
     localReportReqBody.platid.set(109);
     localReportReqBody.appid.set(a(paramString));
     localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
@@ -1141,7 +1141,7 @@ public class RedTouchManager
   {
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("7.6.3.3560");
+    localReportReqBody.clientver.set("7.6.3.3565");
     localReportReqBody.platid.set(109);
     localReportReqBody.appid.set(paramInt2);
     localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
@@ -1745,7 +1745,7 @@ public class RedTouchManager
     }
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("7.6.3.3560");
+    localReportReqBody.clientver.set("7.6.3.3565");
     localReportReqBody.platid.set(109);
     localReportReqBody.missionid.set(paramAppInfo.missions.get());
     localReportReqBody.appid.set(paramAppInfo.uiAppId.get());

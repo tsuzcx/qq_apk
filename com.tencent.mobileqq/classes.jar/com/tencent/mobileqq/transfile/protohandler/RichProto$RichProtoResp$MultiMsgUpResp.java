@@ -15,7 +15,7 @@ public class RichProto$RichProtoResp$MultiMsgUpResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.MultiMsgUpResp
  * JD-Core Version:    0.7.0.1
  */

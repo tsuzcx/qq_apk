@@ -968,7 +968,7 @@ public class VasExtensionHandler
     Object localObject = new IndividPub.Platform_Comm_Req();
     ((IndividPub.Platform_Comm_Req)localObject).platForm.set(109L);
     ((IndividPub.Platform_Comm_Req)localObject).osver.set(Build.VERSION.RELEASE);
-    ((IndividPub.Platform_Comm_Req)localObject).mqqver.set("7.6.3.3560");
+    ((IndividPub.Platform_Comm_Req)localObject).mqqver.set("7.6.3.3565");
     localexpTips_Req.comm.set((MessageMicro)localObject);
     localexpTips_Req.cmd.set(1);
     localexpTips_Req.setHasFlag(true);
@@ -1036,7 +1036,7 @@ public class VasExtensionHandler
     praise_sso.TPraiseSsoReq localTPraiseSsoReq = new praise_sso.TPraiseSsoReq();
     localTPraiseSsoReq.i32_cmd.set(1);
     localTPraiseSsoReq.i32_implat.set(109);
-    localTPraiseSsoReq.str_qq_ver.set("7.6.3.3560");
+    localTPraiseSsoReq.str_qq_ver.set("7.6.3.3565");
     localTPraiseSsoReq.st_cmd0x1_req.set((MessageMicro)localObject);
     localObject = new NewIntent(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), VasExtensionServlet.class);
     ((NewIntent)localObject).putExtra("cmd", "Praise.sso");
@@ -2018,7 +2018,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3.3560");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3.3565");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       if ("apollo_aio_game.report_user_track".equals(paramString1))
@@ -2066,7 +2066,7 @@ public class VasExtensionHandler
       WebSSOAgent.UniSsoServerReqComm localUniSsoServerReqComm = new WebSSOAgent.UniSsoServerReqComm();
       localUniSsoServerReqComm.platform.set(109L);
       localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
-      localUniSsoServerReqComm.mqqver.set("7.6.3.3560");
+      localUniSsoServerReqComm.mqqver.set("7.6.3.3565");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
       localUniSsoServerReq.reqdata.set(paramString2);
@@ -2548,7 +2548,7 @@ public class VasExtensionHandler
     {
       SCUpdatePB.SCUpdateReq localSCUpdateReq = new SCUpdatePB.SCUpdateReq();
       localSCUpdateReq.comm.plat.set(109);
-      localSCUpdateReq.comm.qver.set(ByteStringMicro.copyFrom("7.6.3.3560".getBytes()));
+      localSCUpdateReq.comm.qver.set(ByteStringMicro.copyFrom("7.6.3.3565".getBytes()));
       localSCUpdateReq.comm.osrelease.set(ByteStringMicro.copyFrom(String.valueOf(Build.VERSION.SDK_INT).getBytes()));
       localSCUpdateReq.comm.network.set(NetworkUtil.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()));
       localSCUpdateReq.comm.setHasFlag(true);
@@ -4452,7 +4452,7 @@ public class VasExtensionHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasExtensionHandler
  * JD-Core Version:    0.7.0.1
  */

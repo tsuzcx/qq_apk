@@ -263,7 +263,7 @@ public class Texture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.Texture
  * JD-Core Version:    0.7.0.1
  */

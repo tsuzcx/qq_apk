@@ -47,7 +47,7 @@ public class NumRedPointHandler
     NumRedPoint.NumRedReqBody localNumRedReqBody = new NumRedPoint.NumRedReqBody();
     localNumRedReqBody.i_proto_ver.set(1);
     localNumRedReqBody.uint32_plat_id.set(109);
-    localNumRedReqBody.str_client_ver.set("7.6.3.3560");
+    localNumRedReqBody.str_client_ver.set("7.6.3.3565");
     localNumRedReqBody.uint64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
     Object localObject = (NumRedPointManager)this.a.getManager(63);
     ArrayList localArrayList = new ArrayList();
